@@ -3,8 +3,7 @@ const app = express();
 const session = require('express-session');
 const routes = require('./routes/html-routes.js');
 const passport = require('./config/passport');
-
-app.set('view engine', 'ejs');
+const exphbs = require('express-handlebars');
 
 app.use(
   session({
@@ -16,8 +15,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-const exphbs = require('express-handlebars');
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
