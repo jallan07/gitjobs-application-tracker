@@ -17,6 +17,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+const exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
 app.use('/', routes);
 
 const port = 3000;
