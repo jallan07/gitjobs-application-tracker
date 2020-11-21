@@ -46,10 +46,9 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Rolodex.associate = function (models) {
-    Rolodex.belongsTo(models.Companies, {
-      foreignKey: {
-        allowNull: false
-      }
+    Rolodex.belongsTo(models.companies, {
+      foreignKey: 'id',
+      targetKey: 'id'
     });
   };
 
