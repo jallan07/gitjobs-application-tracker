@@ -4,4 +4,4 @@ module.exports = {
     clientSecret: 'ZO2O6KbUg8K4ASxt',
     callbackURL: 'http://localhost:3000/auth/linkedin/callback'
   }
-}
+};
