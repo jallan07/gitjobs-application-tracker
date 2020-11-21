@@ -19,7 +19,6 @@ CREATE TABLE applications
 (
     id INT NOT NULL AUTO_INCREMENT,
     job_name VARCHAR(255) NOT NULL,
-    company_id VARCHAR(255) NOT NULL REFERENCES companies(id),
     job_link VARCHAR(255) NOT NULL,
     job_salary INT,
     job_hiringMgrName VARCHAR(255) NOT NULL,
@@ -28,7 +27,9 @@ CREATE TABLE applications
     job_status VARCHAR(255) NOT NULL,
     job_nextStep TEXT,
     applied BOOLEAN DEFAULT false,
+    
     PRIMARY KEY (id),
+    company_id VARCHAR(255) NOT NULL REFERENCES companies(id),
 );
 
 CREATE TABLE rolodex 
@@ -36,7 +37,7 @@ CREATE TABLE rolodex
     id INT NOT NULL AUTO_INCREMENT,
     network_name VARCHAR(255) NOT NULL,
     network_relationship VARCHAR(255) NOT NULL,
-    company_id VARCHAR(255) NOT NULL REFERENCES companies(id),
+
     network_title VARCHAR(255) NOT NULL,
     network_city VARCHAR(255) NOT NULL,
     network_phone VARCHAR(255) NOT NULL,
@@ -44,5 +45,7 @@ CREATE TABLE rolodex
     network_linkedin VARCHAR(255),
     network_github VARCHAR(255),
     network_notes TEXT,
+    
     PRIMARY KEY (id),
+    company_id VARCHAR(255) NOT NULL REFERENCES companies(id),
 );
