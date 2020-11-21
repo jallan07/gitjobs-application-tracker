@@ -1,22 +1,22 @@
 module.exports = (sequelize, DataTypes) => {
   const Companies = sequelize.define('companies', {
-    company_name: {
+    companyName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-    company_website: {
+    companyWebsite: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-    company_description: {
-      type: DataTypes.TEXT,
-    },
+    companyDescription: {
+      type: DataTypes.TEXT
+    }
   });
 
   Companies.associate = (models) => {

@@ -1,55 +1,55 @@
 module.exports = (sequelize, DataTypes) => {
   const Rolodex = sequelize.define('Rolodex', {
-    network_name: {
+    contactsName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-    network_relationship: {
+    contactsRelationship: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-    network_title: {
-      type: DataTypes.STRING,
+    contactsTitle: {
+      type: DataTypes.STRING
     },
-    network_city: {
+    contactsCity: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-    network_phone: {
-      type: DataTypes.STRING,
+    contactsPhone: {
+      type: DataTypes.STRING
     },
-    network_email: {
-      type: DataTypes.STRING,
+    contactsEmail: {
+      type: DataTypes.STRING
     },
-    network_linkedin: {
-      type: DataTypes.STRING,
+    contactsLinkedin: {
+      type: DataTypes.STRING
     },
-    network_github: {
-      type: DataTypes.STRING,
+    contactsGithub: {
+      type: DataTypes.STRING
     },
-    network_notes: {
+    contactsNotes: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [1],
-      },
-    },
+        len: [1]
+      }
+    }
   });
 
   Rolodex.associate = function (models) {
     Rolodex.belongsTo(models.Companies, {
       foreignKey: {
-        allowNull: false,
-      },
+        allowNull: false
+      }
     });
   };
 

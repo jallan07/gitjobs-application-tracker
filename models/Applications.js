@@ -1,61 +1,61 @@
 module.exports = (sequelize, DataTypes) => {
   const Applications = sequelize.define('Applications', {
-    job_name: {
+    jobName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-    job_link: {
+    jobLink: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-    job_salary: {
-      type: DataTypes.INTEGER,
+    jobSalary: {
+      type: DataTypes.INTEGER
     },
-    job_hiringMgrName: {
+    jobHiringMgrName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-    job_hiringMgrTitle: {
-      type: DataTypes.STRING,
+    jobHiringMgrTitle: {
+      type: DataTypes.STRING
     },
-    job_hiringMgrEmail: {
-      type: DataTypes.STRING,
+    jobHiringMgrEmail: {
+      type: DataTypes.STRING
     },
-    job_status: {
+    jobStatus: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
-    job_nextStep: {
+    jobNextStep: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
-        len: [1],
-      },
+        len: [1]
+      }
     },
     applied: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false,
-    },
+      defaultValue: false
+    }
   });
 
   Applications.associate = function (models) {
     Applications.belongsTo(models.Companies, {
       foreignKey: {
-        allowNull: false,
-      },
+        allowNull: false
+      }
     });
   };
   return Applications;
