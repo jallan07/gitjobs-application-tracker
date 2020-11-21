@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     network_title: {
       type: DataTypes.STRING,
-      allowNull: true,
     },
     network_city: {
       type: DataTypes.STRING,
@@ -27,31 +26,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     network_phone: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1],
-      },
     },
     network_email: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1],
-      },
     },
     network_linkedin: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1],
-      },
     },
     network_github: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1],
-      },
     },
     network_notes: {
       type: DataTypes.TEXT,

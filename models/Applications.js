@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     job_salary: {
       type: DataTypes.INTEGER,
-      allowNull: true,
     },
     job_hiringMgrName: {
       type: DataTypes.STRING,
@@ -27,17 +26,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     job_hiringMgrTitle: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1],
-      },
     },
     job_hiringMgrEmail: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1],
-      },
     },
     job_status: {
       type: DataTypes.STRING,
@@ -52,6 +43,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [1],
       },
+    },
+    applied: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
   });
 

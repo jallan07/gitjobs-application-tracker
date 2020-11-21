@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     company_description: {
       type: DataTypes.TEXT,
-      allowNull: true,
     },
   });
 
