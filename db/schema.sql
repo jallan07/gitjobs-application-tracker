@@ -12,7 +12,7 @@ CREATE TABLE companies
     company_website VARCHAR(255) NOT NULL,
     -- company_logo VARCHAR(255),
     company_description TEXT,
-    PRIMARY KEY (id) 
+    PRIMARY KEY (id),
 );
 
 CREATE TABLE applications 
@@ -28,7 +28,7 @@ CREATE TABLE applications
     job_status VARCHAR(255) NOT NULL,
     job_nextStep TEXT,
     applied BOOLEAN DEFAULT false,
-    PRIMARY KEY (id) 
+    PRIMARY KEY (id),
 );
 
 CREATE TABLE rolodex 
@@ -44,5 +44,5 @@ CREATE TABLE rolodex
     network_linkedin VARCHAR(255),
     network_github VARCHAR(255),
     network_notes TEXT,
-    PRIMARY KEY (id) ,
+    PRIMARY KEY (id),
 );
