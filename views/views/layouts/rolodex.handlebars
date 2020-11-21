@@ -1,0 +1,66 @@
+<h1>Rolodex!</h1>
+
+<h2>A Page to Store your Contacts</h2>
+
+
+
+<section id="add" class="container">
+    <div class="form-wrap">
+      <h1>Add A Contact</h1>
+      <p>Add a new contact to your rolodex</p>
+      {{#each errors}}
+      <div class="error">
+        <p>ERRORS EVERYWHERE!</p>
+      </div>
+      {{/each}}
+      <form action="/contacts/add" method="POST">
+        <div class="input-group">
+          <label for="contacts_name">Name of the contact</label>
+          <input type="text" name="contacts_name" id="contacts_name" class="input-box" placeholder="Name"
+            maxlength="100" value={{contacts_name}}>
+        </div>
+        <div class="input-group">
+          <label for="contacts_relationship">Relationship</label>
+          <input type="text" name="contacts_relationship" id="contacts_relationship" class="input-box" placeholder="Relationship"
+          maxlength="100" value={{contacts_relationship}}>
+        </div>
+        <div class="input-group">
+          <label for="contacts_title">Company</label>
+          <input type="text" name="contacts_company" id="contacts_company" class="input-box" placeholder="Company"
+          maxlength="100" value={{contacts_company}}>
+        </div>
+         <div class="input-group">
+          <label for="contacts_title">City</label>
+          <input type="text" name="contacts_city" id="contacts_city" class="input-box" placeholder="City"
+          maxlength="100" value={{contacts_city}}>
+        </div>
+         <div class="input-group">
+          <label for="contacts_title">Title</label>
+          <input type="text" name="contacts_title" id="contacts_title" class="input-box" placeholder="Title"
+          maxlength="100" value={{contacts_title}}>
+        </div>
+         <div class="input-group">
+          <label for="contacts_title">Phone</label>
+          <input type="text" name="contacts_phone" id="contacts_phone" class="input-box" placeholder="Phone"
+          maxlength="100" value={{contacts_title}}>
+        </div>
+         <div class="input-group">
+          <label for="contacts_title">Email</label>
+          <input type="text" name="contacts_email" id="contacts_title" class="input-box" placeholder="Email"
+          maxlength="100" value={{contacts_email}}>
+        </div>
+         <div class="input-group">
+          <label for="contacts_title">GitHub</label>
+          <input type="text" name="contacts_github" id="contacts_github" class="input-box" placeholder="Github"
+          maxlength="100" value={{contacts_gihub}}>
+        </div>
+
+        <div class="form-group consumedBtns">
+          <label for="applied">Have you applied yet?</label><br>
+          <input class = "appliedBtns" type="radio" name="applied" value="1" checked>Yes<br>
+          <input class = "appliedBtns" type="radio" name="applied" value="0">No
+        </div>
+        <input type="submit" value="Add Contact" class="btn btn-reverse">
+      </form>
+    </div>
+  </section>
