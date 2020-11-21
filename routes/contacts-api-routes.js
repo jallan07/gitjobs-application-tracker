@@ -53,7 +53,7 @@ module.exports = (app) => {
       );
     } else {
       // Make lowercase and remove space after comma
-      contactsCity = style.toLowerCase();
+      contactsCity = contactsCity.toLowerCase();
 
       // Insert into table
       //TODO Can I use req.body below instead?
