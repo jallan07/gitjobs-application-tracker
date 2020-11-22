@@ -3,10 +3,20 @@ const db = require('../models');
 const Sequelize = require('sequelize');
 
 module.exports = (app) => {
+  //* ==========================
+  //* GET routes
+  //* ==========================
+  // Get all
   app.get('api/contacts', (req, res) =>
     db.Rolodex.findAll({}).then((contacts) => res.json(contacts))
   );
 
+  // TODO: Get all by City
+  // TODO: Get all by Relationship
+  //* ==========================
+  //* POST ROUTES
+  //* ==========================
+  // Add a contact
   app.post('api/contacts/add', (req, res) => {
     let {
       contactsName,
@@ -52,7 +62,7 @@ module.exports = (app) => {
         }
       );
     } else {
-      // Make lowercase and remove space after comma
+      // Make lowercase
       contactsCity = contactsCity.toLowerCase();
 
       // Insert into table
@@ -71,5 +81,30 @@ module.exports = (app) => {
         .then((contact) => res.redirect('/contacts'))
         .catch((err) => console.log(err));
     }
+  });
+
+  //* ==========================
+  //* Put Routes
+  //* ==========================
+  //TODO Finish this
+  app.put('/api/contacts', (req, res) => {
+    db.Applications.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then((job) => res.json(job));
+  });
+
+  //* ==========================
+  //* Delete Routes
+  //* ==========================
+  //TODO Finish this
+
+  app.delete('/api/contacts/:id', (req, res) => {
+    db.Applications.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then((job) => res.json(job));
   });
 };

@@ -5,6 +5,8 @@ const routes = require('./routes/html-routes.js');
 const passport = require('./config/passport');
 const exphbs = require('express-handlebars');
 
+const db = require('./models');
+
 app.use(
   session({
     resave: false,
@@ -19,10 +21,17 @@ app.use(passport.session());
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+//* =============================================================
+//* Routes
+//* =============================================================
 app.use('/', routes);
+require('./routes/contacts-api-routes')(app);
+require('./routes/applications-api-routes')(app);
 
 const port = 3000;
 
-app.listen(port, () => {
-  console.log('App listening on port http://localhost:' + port);
+db.sequelize.sync().then(() => {
+  app.listen(port, () => {
+    console.log('App listening on port http://localhost:' + port);
+  });
 });
