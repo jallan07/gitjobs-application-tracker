@@ -7,9 +7,9 @@ module.exports = (app) => {
   //* GET routes
   //* ==========================
   // Get all
-  app.get('api/contacts', (req, res) =>
-    db.Rolodex.findAll({}).then((contacts) => res.json(contacts))
-  );
+  app.get('/api/contacts', (req, res) => {
+    db.Rolodex.findAll({}).then((contacts) => res.json(contacts));
+  });
 
   // TODO: Get all by City
   // TODO: Get all by Relationship
@@ -17,7 +17,7 @@ module.exports = (app) => {
   //* POST ROUTES
   //* ==========================
   // Add a contact
-  app.post('api/contacts/add', (req, res) => {
+  app.post('/api/contacts/add', (req, res) => {
     let {
       contactsName,
       contactsRelationship,
