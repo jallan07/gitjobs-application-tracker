@@ -17,9 +17,10 @@ router.get('/profile', isLoggedIn, function (req, res) {
 // get linkedin authentication
 router.get(
   '/auth/linkedin',
-  passport.authenticate('linkedin', {
-    scope: ['r_emailaddress', 'r_liteprofile']
-  })
+  passport.authenticate('linkedin'),
+  function (req, res) {
+    console.log(res);
+  }
 );
 
 // get linkedin authentication callback

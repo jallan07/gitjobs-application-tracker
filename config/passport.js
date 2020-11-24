@@ -2,6 +2,8 @@ const passport = require('passport');
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const linkedinKeys = require('./linkedin-keys');
 
+// const User = require('../models').Users;
+
 // Login using the Linkedin Strategy
 passport.use(
   new LinkedInStrategy(
@@ -9,10 +11,44 @@ passport.use(
       clientID: linkedinKeys.linkedinAuth.clientID,
       clientSecret: linkedinKeys.linkedinAuth.clientSecret,
       callbackURL: linkedinKeys.linkedinAuth.callbackURL,
-      scope: ['r_emailaddress', 'r_liteprofile']
+      scope: ['r_emailaddress', 'r_liteprofile'],
+      state: true
     },
     function (token, tokenSecret, profile, done) {
+      console.log(profile);
+      console.log({ token });
       return done(null, profile);
+      /*
+      process.nextTick(function () {
+        User.findOne({
+          where: {
+            linkedinID: profile.id
+          }
+        }, function (err, user) {
+          if (err) {
+            return done(err);
+          }
+          // No user was found... so create a new user with values from Facebook (all the profile. stuff)
+          if (!user) {
+            user = new User({
+              linkedinID: profile.id,
+              firstName: profile.givenName,
+              lastName: profile.familyName,
+              email: profile.emails[0].value
+              // now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
+              // facebook: profile._json
+            });
+            user.save(function (err) {
+              if (err) console.log(err);
+              return done(err, user);
+            });
+          } else {
+            // found user. Return
+            return done(err, user);
+          }
+        });
+      });
+       */
     }
   )
 );
