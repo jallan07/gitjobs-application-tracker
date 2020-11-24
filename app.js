@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
-const routes = require('./routes/html-routes.js');
 const passport = require('./config/passport');
 const exphbs = require('express-handlebars');
 
@@ -24,9 +23,9 @@ app.set('view engine', 'handlebars');
 //* =============================================================
 //* Routes
 //* =============================================================
-app.use('/', routes);
 require('./routes/contacts-api-routes')(app);
 require('./routes/applications-api-routes')(app);
+require('./routes/html-routes')(app);
 
 const port = 3000;
 

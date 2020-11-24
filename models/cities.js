@@ -1,7 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
   const Cities = sequelize.define(
     'Cities',
-    {},
+    {
+      cityName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      }
+    },
     {
       freezeTableName: true
     }

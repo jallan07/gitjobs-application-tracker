@@ -52,12 +52,13 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  Rolodex.associate = (models) => {
-    Rolodex.belongsTo(models.cities, {
-      foreignKey: 'id',
-      targetKey: 'id'
-    });
-  };
+  // Rolodex.associate = (models) => {
+  //   Rolodex.belongsTo(models.cities, {
+  //     // TODO This doesn't look right - what should the FK association look like?
+  //     foreignKey: 'id',
+  //     targetKey: 'id'
+  //   });
+  // };
 
   return Rolodex;
 };

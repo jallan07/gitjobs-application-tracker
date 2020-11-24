@@ -1,6 +1,5 @@
 // This file is used to define all routes related to reading, writing, updating, and deleting contacts from the CRM feature of the app
 const db = require('../models');
-const Sequelize = require('sequelize');
 
 module.exports = (app) => {
   //* ==========================
@@ -30,7 +29,7 @@ module.exports = (app) => {
       contactsNotes
     } = req.body;
     console.log(req.body);
-    let errors = [];
+    const errors = [];
     // Validate Fields
     if (!contactsName) {
       errors.push({ text: 'Please add a name' });
@@ -47,7 +46,7 @@ module.exports = (app) => {
     // Check for errors
     if (errors.length > 0) {
       res.render(
-        //TODO Add Handlebars view +,
+        // TODO Add Handlebars view +,
         {
           contactsName,
           contactsRelationship,
@@ -85,7 +84,7 @@ module.exports = (app) => {
   //* ==========================
   //* Put Routes
   //* ==========================
-  //TODO Finish this
+  // TODO Finish this
   app.put('/api/contacts', (req, res) => {
     db.Applications.update(req.body, {
       where: {
@@ -97,7 +96,7 @@ module.exports = (app) => {
   //* ==========================
   //* Delete Routes
   //* ==========================
-  //TODO Finish this
+  // TODO Finish this
 
   app.delete('/api/contacts/:id', (req, res) => {
     db.Applications.destroy({
