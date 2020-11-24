@@ -76,7 +76,7 @@ module.exports = (app) => {
         contactGithub,
         contactsNotes
       })
-        .then((contact) => res.redirect('/contacts'))
+        .then((contact) => res.redirect('/rolodex'))
         .catch((err) => console.log(err));
     }
   });

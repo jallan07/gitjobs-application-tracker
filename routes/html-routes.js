@@ -47,7 +47,7 @@ module.exports = (app) => {
 
   // get the rolodex for the logged in user
   app.get('/rolodex', function (req, res) {
-    res.render('rolodex');
+    res.render('./../views/rolodex');
   });
 
   // logout the user and send them back to the main index page
