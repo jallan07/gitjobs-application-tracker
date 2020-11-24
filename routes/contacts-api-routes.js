@@ -6,7 +6,7 @@ module.exports = (app) => {
   //* GET routes
   //* ==========================
   // Get all
-  app.get('/api/contacts', (req, res) => {
+  app.get('/api/rolodex', (req, res) => {
     db.Rolodex.findAll({}).then((contacts) => res.json(contacts));
   });
 
@@ -16,7 +16,7 @@ module.exports = (app) => {
   //* POST ROUTES
   //* ==========================
   // Add a contact
-  app.post('/api/contacts/add', (req, res) => {
+  app.post('/api/rolodex', (req, res) => {
     let {
       contactsName,
       contactsRelationship,
@@ -76,7 +76,7 @@ module.exports = (app) => {
         contactGithub,
         contactsNotes
       })
-        .then((contact) => res.redirect('/rolodex'))
+        .then((contact) => res.redirect('/api/rolodex'))
         .catch((err) => console.log(err));
     }
   });
@@ -85,8 +85,8 @@ module.exports = (app) => {
   //* Put Routes
   //* ==========================
   // TODO Finish this
-  app.put('/api/contacts', (req, res) => {
-    db.Applications.update(req.body, {
+  app.put('/api/rolodex', (req, res) => {
+    db.Rolodex.update(req.body, {
       where: {
         id: req.body.id
       }
@@ -98,8 +98,8 @@ module.exports = (app) => {
   //* ==========================
   // TODO Finish this
 
-  app.delete('/api/contacts/:id', (req, res) => {
-    db.Applications.destroy({
+  app.delete('/api/rolodex/:id', (req, res) => {
+    db.Rolodex.destroy({
       where: {
         id: req.params.id
       }
