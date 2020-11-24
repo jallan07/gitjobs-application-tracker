@@ -58,10 +58,18 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Applications.associate = (models) => {
+    Applications.belongsTo(models.cities, {
+      foreignKey: 'id',
+      targetKey: 'id'
+    });
+  };
+
+  Applications.associate = (models) => {
     Applications.belongsTo(models.companies, {
       foreignKey: 'id',
       targetKey: 'id'
     });
   };
+
   return Applications;
 };

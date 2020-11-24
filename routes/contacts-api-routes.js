@@ -48,7 +48,6 @@ module.exports = (app) => {
     if (errors.length > 0) {
       res.render(
         //TODO Add Handlebars view +,
-        //TODO Can I use req.body below instead?
         {
           contactsName,
           contactsRelationship,
@@ -66,7 +65,7 @@ module.exports = (app) => {
       contactsCity = contactsCity.toLowerCase();
 
       // Insert into table
-      //TODO Can I use req.body below instead?
+
       db.Rolodex.create({
         contactsName,
         contactsRelationship,
@@ -92,7 +91,7 @@ module.exports = (app) => {
       where: {
         id: req.body.id
       }
-    }).then((job) => res.json(job));
+    }).then((contact) => res.json(contact));
   });
 
   //* ==========================
@@ -105,6 +104,6 @@ module.exports = (app) => {
       where: {
         id: req.params.id
       }
-    }).then((job) => res.json(job));
+    }).then((contact) => res.json(contact));
   });
 };

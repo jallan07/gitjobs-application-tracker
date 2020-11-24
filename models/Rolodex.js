@@ -52,5 +52,12 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  Rolodex.associate = (models) => {
+    Rolodex.belongsTo(models.cities, {
+      foreignKey: 'id',
+      targetKey: 'id'
+    });
+  };
+
   return Rolodex;
 };
