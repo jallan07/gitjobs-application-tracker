@@ -18,7 +18,7 @@ module.exports = (app) => {
 
   // index route loads view.html
   app.get('/', (req, res) => {
-    res.render('pages/index.ejs'); // load the index.ejs file
+    res.render('index'); // load the index.ejs file
   });
 
   // get the profile for logged in users
