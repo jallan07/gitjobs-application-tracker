@@ -19,13 +19,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Companies.associate = (models) => {
-    Companies.hasMany(models.Rolodex, {
-      as: 'Rolodex',
-      foreignKey: 'id',
-      sourceKey: 'id'
-    });
-  };
+  // Companies.associate = (models) => {
+  //   Companies.hasMany(models.Rolodex, {
+  //     as: 'Rolodex',
+  //     foreignKey: 'id',
+  //     sourceKey: 'id'
+  //   });
+  // };
 
   // Companies.associate = (models) => {
   //   Companies.hasMany(models.Applications, {

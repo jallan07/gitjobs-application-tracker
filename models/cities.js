@@ -15,13 +15,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Cities.associate = (models) => {
-    Cities.hasMany(models.Rolodex, {
-      as: 'Rolodex',
-      foreignKey: 'id',
-      sourceKey: 'id'
-    });
-  };
+  // Cities.associate = (models) => {
+  //   Cities.hasMany(models.Rolodex, {
+  //     as: 'Rolodex',
+  //     foreignKey: 'id',
+  //     sourceKey: 'id'
+  //   });
+  // };
 
   // Cities.associate = (models) => {
   //   Cities.hasMany(models.Applications, {

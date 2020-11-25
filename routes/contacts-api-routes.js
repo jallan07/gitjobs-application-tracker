@@ -6,7 +6,7 @@ module.exports = (app) => {
   //* GET routes
   //* ==========================
   // Get all
-  app.get('/api/contacts', (req, res) => {
+  app.get('/api/Rolodex', (req, res) => {
     db.Rolodex.findAll({}).then((contacts) => res.json(contacts));
   });
 
@@ -16,19 +16,21 @@ module.exports = (app) => {
   //* POST ROUTES
   //* ==========================
   // Add a contact
-  app.post('/api/contacts/add', (req, res) => {
-    let {
+  app.post('/api/Rolodex', (req, res) => {
+    console.log(req.body);
+    const {
       contactsName,
       contactsRelationship,
+      // contactsCompany,
       contactsTitle,
-      contactsCity,
+      // contactsCity,
       contactsPhone,
       contactsEmail,
       contactsLinkedin,
       contactGithub,
       contactsNotes
     } = req.body;
-    console.log(req.body);
+
     const errors = [];
     // Validate Fields
     if (!contactsName) {
@@ -37,56 +39,51 @@ module.exports = (app) => {
     if (!contactsRelationship) {
       errors.push({ text: 'How do you know this person?' });
     }
-    if (!contactsCity) {
-      errors.push({ text: 'Where do they live or work?' });
-    }
+    // if (!contactsCity) {
+    //   errors.push({ text: 'Where do they live or work?' });
+    // }
     if (!contactsNotes) {
       errors.push({ text: 'Please add some information about this contact' });
     }
     // Check for errors
     if (errors.length > 0) {
-      res.render(
-        // TODO Add Handlebars view +,
-        {
-          contactsName,
-          contactsRelationship,
-          contactsTitle,
-          contactsCity,
-          contactsPhone,
-          contactsEmail,
-          contactsLinkedin,
-          contactGithub,
-          contactsNotes
-        }
-      );
+      res.render('rolodex', {
+        contactsName,
+        contactsRelationship,
+        // contactsCompany,
+        contactsTitle,
+        // contactsCity,
+        contactsPhone,
+        contactsEmail,
+        contactsLinkedin,
+        contactGithub,
+        contactsNotes
+      });
     } else {
-      // Make lowercase
-      contactsCity = contactsCity.toLowerCase();
-
       // Insert into table
 
       db.Rolodex.create({
         contactsName,
         contactsRelationship,
+        // contactsCompany,
         contactsTitle,
-        contactsCity,
+        // contactsCity,
         contactsPhone,
         contactsEmail,
         contactsLinkedin,
         contactGithub,
         contactsNotes
       })
-        .then((contact) => res.redirect('/rolodex'))
+        .then((contact) => res.json(contact))
         .catch((err) => console.log(err));
     }
   });
-
   //* ==========================
   //* Put Routes
   //* ==========================
   // TODO Finish this
-  app.put('/api/contacts', (req, res) => {
-    db.Applications.update(req.body, {
+  app.put('/api/rolodex/:id', (req, res) => {
+    db.Rolodex.update(req.body, {
       where: {
         id: req.body.id
       }
@@ -98,8 +95,8 @@ module.exports = (app) => {
   //* ==========================
   // TODO Finish this
 
-  app.delete('/api/contacts/:id', (req, res) => {
-    db.Applications.destroy({
+  app.delete('/api/rolodex/:id', (req, res) => {
+    db.Rolodex.destroy({
       where: {
         id: req.params.id
       }

@@ -7,8 +7,9 @@ const bodyParser = require('body-parser');
 
 const db = require('./models');
 
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true }));
+// Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
   session({
