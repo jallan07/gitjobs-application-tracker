@@ -17,7 +17,8 @@ module.exports = (app) => {
   });
 
   // create a new job
-  app.post('api/applications', (req, res) => {
+  app.post('/api/applications', (req, res) => {
+    console.log(req.body);
     // destructure the object variables
     const {
       jobName,
@@ -46,12 +47,11 @@ module.exports = (app) => {
 
   // update job
   app.put('/api/applications', (req, res) => {
-    db.Applications.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      }).then((job) => res.json(job));
+    db.Applications.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then((job) => res.json(job));
   });
 
   // delete job

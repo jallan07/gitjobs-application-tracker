@@ -27,13 +27,13 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  Companies.associate = (models) => {
-    Companies.hasMany(models.Applications, {
-      as: 'Applications',
-      foreignKey: 'id',
-      sourceKey: 'id'
-    });
-  };
+  // Companies.associate = (models) => {
+  //   Companies.hasMany(models.Applications, {
+  //     as: 'Applications',
+  //     foreignKey: 'id',
+  //     sourceKey: 'id'
+  //   });
+  // };
 
   return Companies;
 };
