@@ -2,8 +2,6 @@
 
 <h2>A Page to Store your Contacts</h2>
 
-
-
 <section id="add" class="container">
     <div class="form-wrap">
       <h1>Add A Contact</h1>
@@ -13,46 +11,56 @@
         <p>ERRORS EVERYWHERE!</p>
       </div>
       {{/each}}
-      <form action="/contacts/add" method="POST">
+      <form action="/api/rolodex" method="POST">
         <div class="input-group">
-          <label for="contacts_name">Name of the contact</label>
-          <input type="text" name="contacts_name" id="contacts_name" class="input-box" placeholder="Name"
-            maxlength="100" value={{contacts_name}}>
-        </div>
-        <div class="input-group">
-          <label for="contacts_relationship">Relationship</label>
-          <input type="text" name="contacts_relationship" id="contacts_relationship" class="input-box" placeholder="Relationship"
-          maxlength="100" value={{contacts_relationship}}>
+          <label for="contactsName">Name of the contact</label>
+          <input type="text" name="contactsName" id="contactsName" class="input-box" placeholder="Name"
+            maxlength="100" value={{contactsName}}>
         </div>
         <div class="input-group">
-          <label for="contacts_title">Company</label>
-          <input type="text" name="contacts_company" id="contacts_company" class="input-box" placeholder="Company"
-          maxlength="100" value={{contacts_company}}>
+          <label for="contactsRelationship">Relationship</label>
+          <input type="text" name="contactsRelationship" id="contactsRelationship" class="input-box" placeholder="Relationship"
+          maxlength="100" value={{contactsRelationship}}>
         </div>
          <div class="input-group">
-          <label for="contacts_title">City</label>
-          <input type="text" name="contacts_city" id="contacts_city" class="input-box" placeholder="City"
-          maxlength="100" value={{contacts_city}}>
+          <label for="contactsCity">City</label>
+          <input type="text" name="contactsCity" id="contactsCity" class="input-box" placeholder="City"
+          maxlength="100" value={{contactsCity}}>
+        </div>
+        <div class="input-group">
+          <label for="contactsCompany">Company</label>
+          <input type="text" name="contactsCompany" id="contactsCompany" class="input-box" placeholder="Company"
+          maxlength="100" value={{contactsCompany}}>
         </div>
          <div class="input-group">
-          <label for="contacts_title">Title</label>
-          <input type="text" name="contacts_title" id="contacts_title" class="input-box" placeholder="Title"
-          maxlength="100" value={{contacts_title}}>
+          <label for="contactsTitle">Title</label>
+          <input type="text" name="contactsTitle" id="contactsTitle" class="input-box" placeholder="Title"
+          maxlength="100" value={{contactsTitle}}>
         </div>
          <div class="input-group">
-          <label for="contacts_title">Phone</label>
-          <input type="text" name="contacts_phone" id="contacts_phone" class="input-box" placeholder="Phone"
-          maxlength="100" value={{contacts_title}}>
+          <label for="contactsPhone">Phone</label>
+          <input type="text" name="contactsPhone" id="contactsPhone" class="input-box" placeholder="Phone"
+          maxlength="100" value={{contactsPhone}}>
         </div>
          <div class="input-group">
-          <label for="contacts_title">Email</label>
-          <input type="text" name="contacts_email" id="contacts_title" class="input-box" placeholder="Email"
-          maxlength="100" value={{contacts_email}}>
+          <label for="contactsEmail">Email</label>
+          <input type="text" name="contactsEmail" id="contactsEmail" class="input-box" placeholder="Email"
+          maxlength="100" value={{contactsEmail}}>
         </div>
          <div class="input-group">
-          <label for="contacts_title">GitHub</label>
-          <input type="text" name="contacts_github" id="contacts_github" class="input-box" placeholder="Github"
-          maxlength="100" value={{contacts_gihub}}>
+          <label for="contactGithub">GitHub</label>
+          <input type="text" name="contactGithub" id="contactGithub" class="input-box" placeholder="Github"
+          maxlength="100" value={{contactGithub}}>
+        </div>
+                 <div class="input-group">
+          <label for="contactsLinkedin">Linkedin</label>
+          <input type="text" name="contactsLinkedin" id="contactsLinkedin" class="input-box" placeholder="Github"
+          maxlength="100" value={{contactsLinkedin}}>
+        </div>
+                 <div class="input-group">
+          <label for="contactsNotes">Notes</label>
+          <input type="textarea" name="contactsNotes" id="contactsNotes" class="input-box" placeholder="Github"
+          maxlength="100" value={{contactsNotes}}>
         </div>
 
         {{!-- <div class="form-group appliedBtns">
