@@ -1,47 +1,58 @@
+// *********************************************************************************
+// html-routes.js - this file offers a set of routes for sending users to the various html pages
+// *********************************************************************************
+
+// Dependencies
+// =============================================================
 const passport = require('passport');
-const express = require('express');
-const router = express.Router();
 
-// get the index page
-router.get('/', function (req, res) {
-  res.render('pages/index.ejs'); // load the index.ejs file
-});
+// Routes
+// =============================================================
+module.exports = (app) => {
+  // check whether or not the user is logged in
+  const isLoggedIn = (req, res, next) => {
+    if (req.isAuthenticated()) return next();
+    res.redirect('/');
+  };
+  // Each of the below routes just handles the HTML page that the user gets sent to.
 
-// get the profile for logged in users
-router.get('/profile', isLoggedIn, function (req, res) {
-  res.render('pages/profile.ejs', {
-    user: req.user // get the user out of session and pass to template
+  // index route loads view.html
+  app.get('/', (req, res) => {
+    res.render('index'); // load the index.ejs file
   });
-});
 
-// get linkedin authentication
-router.get(
-  '/auth/linkedin',
-  passport.authenticate('linkedin'),
-  function (req, res) {
-    console.log(res);
-  }
-);
+  // get the profile for logged in users
+  app.get('/profile', isLoggedIn, (req, res) => {
+    res.render('pages/profile.ejs', {
+      user: req.user // get the user out of session and pass to template
+    });
+  });
 
-// get linkedin authentication callback
-router.get(
-  '/auth/linkedin/callback',
-  passport.authenticate('linkedin', {
-    successRedirect: '/profile',
-    failureRedirect: '/login'
-  })
-);
-// logout the user and send them back to the main index page
-router.get('/logout', function (req, res) {
-  req.logout();
-  res.redirect('/');
-});
+  // get linkedin authentication
+  app.get(
+    '/auth/linkedin',
+    passport.authenticate('linkedin', function (req, res) {
+      console.log(res);
+    })
+  );
 
-// check whether or not the user is logged in
-function isLoggedIn (req, res, next) {
-  if (req.isAuthenticated()) return next();
-  res.redirect('/');
-}
+  // get linkedin authentication callback
+  app.get(
+    '/auth/linkedin/callback',
+    passport.authenticate('linkedin', {
+      successRedirect: '/profile',
+      failureRedirect: '/login'
+    })
+  );
 
-// export the file for use in other folders
-module.exports = router;
+  // get the rolodex for the logged in user
+  app.get('/rolodex', function (req, res) {
+    res.render('./../views/rolodex');
+  });
+
+  // logout the user and send them back to the main index page
+  app.get('/logout', function (req, res) {
+    req.logout();
+    res.redirect('/');
+  });
+};
