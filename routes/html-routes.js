@@ -31,8 +31,8 @@ module.exports = (app) => {
   // get linkedin authentication
   app.get(
     '/auth/linkedin',
-    passport.authenticate('linkedin', {
-      scope: ['r_emailaddress', 'r_liteprofile']
+    passport.authenticate('linkedin', function (req, res) {
+      console.log(res);
     })
   );
 
