@@ -19,13 +19,20 @@ module.exports = (sequelize, DataTypes) => {
       contactsTitle: {
         type: DataTypes.STRING
       },
-      contactsCity: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },
+      // contactsCompany: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      //   validate: {
+      //     len: [1]
+      //   }
+      // },
+      // contactsCity: {
+      //   type: DataTypes.STRING,
+      //   // allowNull: false,
+      //   validate: {
+      //     len: [1]
+      //   }
+      // },
       contactsPhone: {
         type: DataTypes.STRING
       },
@@ -51,12 +58,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Rolodex.associate = (models) => {
-    Rolodex.belongsTo(models.companies, {
-      foreignKey: 'id',
-      targetKey: 'id'
-    });
-  };
+  // Rolodex.associate = (models) => {
+  //   Rolodex.belongsTo(models.companies, {
+  //     foreignKey: 'id',
+  //     targetKey: 'id'
+  //   });
+  // };
 
   // Rolodex.associate = (models) => {
   //   Rolodex.belongsTo(models.cities, {

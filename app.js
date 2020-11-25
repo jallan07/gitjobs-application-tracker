@@ -3,8 +3,13 @@ const app = express();
 const session = require('express-session');
 const passport = require('./config/passport');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const db = require('./models');
+
+// Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
   session({
