@@ -1,14 +1,15 @@
 const passport = require('passport');
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-const linkedinKeys = require('./linkedin-keys');
+// const linkedinKeys = require('./linkedin-keys');
+// require('dotenv').config();
 
 // Login using the Linkedin Strategy
 passport.use(
   new LinkedInStrategy(
     {
-      clientID: linkedinKeys.linkedinAuth.clientID,
-      clientSecret: linkedinKeys.linkedinAuth.clientSecret,
-      callbackURL: linkedinKeys.linkedinAuth.callbackURL,
+      clientID: process.env.LIclientID,
+      clientSecret: process.env.LIclientSecret,
+      callbackURL: process.env.LIcallbackURL,
       scope: ['r_emailaddress', 'r_liteprofile']
     },
     function (token, tokenSecret, profile, done) {

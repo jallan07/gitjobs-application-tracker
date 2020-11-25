@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const db = require('./models');
 
 // Body Parser
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   session({
@@ -31,10 +31,10 @@ require('./routes/contacts-api-routes')(app);
 require('./routes/applications-api-routes')(app);
 require('./routes/html-routes')(app);
 
-const port = 3000;
+const PORT = process.env.PORT;
 
 db.sequelize.sync().then(() => {
-  app.listen(port, () => {
-    console.log('App listening on port http://localhost:' + port);
+  app.listen(PORT, () => {
+    console.log('App listening on port http://localhost:' + PORT);
   });
 });
