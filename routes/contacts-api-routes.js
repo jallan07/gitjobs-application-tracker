@@ -1,15 +1,14 @@
 // This file is used to define all routes related to reading, writing, updating, and deleting contacts from the CRM feature of the app
 const db = require('../models');
-const Sequelize = require('sequelize');
 
 module.exports = (app) => {
   //* ==========================
   //* GET routes
   //* ==========================
   // Get all
-  app.get('api/contacts', (req, res) =>
-    db.Rolodex.findAll({}).then((contacts) => res.json(contacts))
-  );
+  app.get('/api/contacts', (req, res) => {
+    db.Rolodex.findAll({}).then((contacts) => res.json(contacts));
+  });
 
   // TODO: Get all by City
   // TODO: Get all by Relationship
@@ -17,7 +16,7 @@ module.exports = (app) => {
   //* POST ROUTES
   //* ==========================
   // Add a contact
-  app.post('api/contacts/add', (req, res) => {
+  app.post('/api/contacts/add', (req, res) => {
     let {
       contactsName,
       contactsRelationship,
@@ -30,7 +29,7 @@ module.exports = (app) => {
       contactsNotes
     } = req.body;
     console.log(req.body);
-    let errors = [];
+    const errors = [];
     // Validate Fields
     if (!contactsName) {
       errors.push({ text: 'Please add a name' });
@@ -47,8 +46,7 @@ module.exports = (app) => {
     // Check for errors
     if (errors.length > 0) {
       res.render(
-        //TODO Add Handlebars view +,
-        //TODO Can I use req.body below instead?
+        // TODO Add Handlebars view +,
         {
           contactsName,
           contactsRelationship,
@@ -66,7 +64,7 @@ module.exports = (app) => {
       contactsCity = contactsCity.toLowerCase();
 
       // Insert into table
-      //TODO Can I use req.body below instead?
+
       db.Rolodex.create({
         contactsName,
         contactsRelationship,
@@ -78,7 +76,7 @@ module.exports = (app) => {
         contactGithub,
         contactsNotes
       })
-        .then((contact) => res.redirect('/contacts'))
+        .then((contact) => res.redirect('/rolodex'))
         .catch((err) => console.log(err));
     }
   });
@@ -86,25 +84,25 @@ module.exports = (app) => {
   //* ==========================
   //* Put Routes
   //* ==========================
-  //TODO Finish this
+  // TODO Finish this
   app.put('/api/contacts', (req, res) => {
     db.Applications.update(req.body, {
       where: {
         id: req.body.id
       }
-    }).then((job) => res.json(job));
+    }).then((contact) => res.json(contact));
   });
 
   //* ==========================
   //* Delete Routes
   //* ==========================
-  //TODO Finish this
+  // TODO Finish this
 
   app.delete('/api/contacts/:id', (req, res) => {
     db.Applications.destroy({
       where: {
         id: req.params.id
       }
-    }).then((job) => res.json(job));
+    }).then((contact) => res.json(contact));
   });
 };
