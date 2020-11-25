@@ -2,20 +2,23 @@
 const db = require('../models');
 
 module.exports = (app) => {
+  //* PASSED TESTING IN POSTMAN
   // get all jobs
   app.get('/api/applications', (req, res) => {
     db.Applications.findAll({}).then((jobs) => res.json(jobs));
   });
 
-  // get all jobs of a specific status
+  //* PASSED TESTING IN POSTMAN
+  // get all jobs of a specific application status
   app.get('/api/applications/:status', (req, res) => {
     db.Applications.findAll({
       where: {
-        job_status: req.params.status
+        jobStatus: req.params.status
       }
     }).then((jobs) => res.json(jobs));
   });
 
+  //* PASSED TESTING IN POSTMAN
   // create a new job
   app.post('/api/applications', (req, res) => {
     console.log(req.body);
@@ -45,6 +48,7 @@ module.exports = (app) => {
     }).then((job) => res.json(job));
   });
 
+  //! TEST PENDING -- REQUIRES FRONTEND LOGIC
   // update job
   app.put('/api/applications', (req, res) => {
     db.Applications.update(req.body, {
@@ -54,6 +58,7 @@ module.exports = (app) => {
     }).then((job) => res.json(job));
   });
 
+  //* PASSED TESTING IN POSTMAN
   // delete job
   app.delete('/api/applications/:id', (req, res) => {
     db.Applications.destroy({
