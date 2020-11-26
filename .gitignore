@@ -1,3 +1,6 @@
+# This contains secrets, don't store in source control
+.env
+
 # Logs
 logs
 *.log
