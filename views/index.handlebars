@@ -1,38 +1,28 @@
-<h1>Cats!</h1>
+		<h1>CV</h1>
 
-<h2>Cats that are not sleepy!</h2>
 
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
 
-<h2>Cats that are sleepy!</h2>
 
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
 
-<h2>Add a Cat</h2>
-<form class="create-form">
+<h2>A Current Look at your Activity!</h2>
 
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
-  </div>
+<div class="container-fluid">
+  <div class="row">
+ {{!-- //pull in commit information// --}}
 
-  <div class="form-group">
-    <label for="sleepy">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
-  </div>
+    <p id="commits">Your most recent Commits</p>
+</div>
 
-  <button type="submit">Add Cat</button>
-</form>
+<div class="container-fluid">
+  <div class="row">
+ {{!-- //pull in repos information// --}}
+
+    <p id="repos">Your most recent Repos</p>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+ {{!-- //list of learned languages// --}}
+
+    <p id="lang">Your learned languages</p>
+</div>
