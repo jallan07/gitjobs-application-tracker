@@ -31,8 +31,8 @@ module.exports = (app) => {
   // get linkedin authentication
   app.get(
     '/auth/linkedin',
-    passport.authenticate('linkedin', {
-      scope: ['r_emailaddress', 'r_liteprofile']
+    passport.authenticate('linkedin', function (req, res) {
+      console.log(res);
     })
   );
 
@@ -47,7 +47,7 @@ module.exports = (app) => {
 
   // get the rolodex for the logged in user
   app.get('/rolodex', function (req, res) {
-    res.render('./../views/rolodex');
+    res.render('rolodex');
   });
 
   // logout the user and send them back to the main index page

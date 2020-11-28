@@ -3,8 +3,13 @@ const app = express();
 const session = require('express-session');
 const passport = require('./config/passport');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const db = require('./models');
+
+// Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
   session({
@@ -27,10 +32,10 @@ require('./routes/contacts-api-routes')(app);
 require('./routes/applications-api-routes')(app);
 require('./routes/html-routes')(app);
 
-const port = 3000;
+const PORT = process.env.PORT;
 
 db.sequelize.sync().then(() => {
-  app.listen(port, () => {
-    console.log('App listening on port http://localhost:' + port);
+  app.listen(PORT, () => {
+    console.log('App listening on port http://localhost:' + PORT);
   });
 });

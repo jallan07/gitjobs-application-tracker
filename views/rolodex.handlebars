@@ -2,8 +2,6 @@
 
 <h2>A Page to Store your Contacts</h2>
 
-
-
 <section id="add" class="container">
     <div class="form-wrap">
       <h1>Add A Contact</h1>
@@ -13,7 +11,7 @@
         <p>ERRORS EVERYWHERE!</p>
       </div>
       {{/each}}
-      <form action="/contacts/add" method="POST">
+      <form action="/api/rolodex" method="POST">
         <div class="input-group">
           <label for="contactsName">Name of the contact</label>
           <input type="text" name="contactsName" id="contactsName" class="input-box" placeholder="Name"
@@ -55,11 +53,11 @@
           maxlength="100" value={{contactsGithub}}>
         </div>
 
-        <div class="form-group consumedBtns">
+        {{!-- <div class="form-group appliedBtns">
           <label for="applied">Have you applied yet?</label><br>
           <input class = "appliedBtns" type="radio" name="applied" value="1" checked>Yes<br>
           <input class = "appliedBtns" type="radio" name="applied" value="0">No
-        </div>
+        </div> --}}
         <input type="submit" value="Add Contact" class="btn btn-reverse">
       </form>
     </div>
