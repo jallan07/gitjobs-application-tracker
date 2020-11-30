@@ -9,6 +9,13 @@ module.exports = (sequelize, DataTypes) => {
           len: [1]
         }
       },
+      jobCompany: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      },
       jobLink: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -57,19 +64,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  // Applications.associate = (models) => {
-  //   Applications.belongsTo(models.cities, {
-  //     foreignKey: 'id',
-  //     targetKey: 'id'
-  //   });
-  // };
-
-  // Applications.associate = (models) => {
-  //   Applications.belongsTo(models.companies, {
-  //     foreignKey: 'id',
-  //     targetKey: 'id'
-  //   });
-  // };
+  Applications.associate = (models) => {
+    Applications.belongsTo(models.Companies, {
+      targetKey: 'companyName',
+      foreignKey: 'jobCompany'
+    });
+  };
 
   return Applications;
 };

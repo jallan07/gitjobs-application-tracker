@@ -19,20 +19,20 @@ module.exports = (sequelize, DataTypes) => {
       contactsTitle: {
         type: DataTypes.STRING
       },
-      // contactsCompany: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      //   validate: {
-      //     len: [1]
-      //   }
-      // },
-      // contactsCity: {
-      //   type: DataTypes.STRING,
-      //   // allowNull: false,
-      //   validate: {
-      //     len: [1]
-      //   }
-      // },
+      contactsCompany: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1]
+        }
+      },
+      contactsCity: {
+        type: DataTypes.STRING,
+
+        validate: {
+          len: [1]
+        }
+      },
       contactsPhone: {
         type: DataTypes.STRING
       },
@@ -58,20 +58,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  // Rolodex.associate = (models) => {
-  //   Rolodex.belongsTo(models.companies, {
-  //     foreignKey: 'id',
-  //     targetKey: 'id'
-  //   });
-  // };
-
-  // Rolodex.associate = (models) => {
-  //   Rolodex.belongsTo(models.cities, {
-  //     // TODO This doesn't look right - what should the FK association look like?
-  //     foreignKey: 'id',
-  //     targetKey: 'id'
-  //   });
-  // };
+  Rolodex.associate = (models) => {
+    Rolodex.belongsTo(models.Companies, {
+      targetKey: 'companyName',
+      foreignKey: 'contactsCompany'
+    });
+  };
 
   return Rolodex;
 };

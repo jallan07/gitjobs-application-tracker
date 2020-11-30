@@ -32,7 +32,6 @@ module.exports = (app) => {
     }).then((contacts) => res.json(contacts));
   });
 
-
   //* ==========================
   //* POST ROUTES
   //* ==========================
