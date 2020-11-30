@@ -8,9 +8,20 @@ module.exports = (sequelize, DataTypes) => {
         len: [1]
       }
     },
+    companyEmployees: {
+      type: DataTypes.INTEGER,
+      validate: {
+        len: [1]
+      }
+    },
+    companyRevenue: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1]
+      }
+    },
     companyWebsite: {
       type: DataTypes.STRING,
-      // allowNull: false,
       validate: {
         len: [1]
       }

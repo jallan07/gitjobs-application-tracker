@@ -102,7 +102,6 @@ module.exports = (app) => {
   //* ==========================
   //* Put Routes
   //* ==========================
-  // TODO Finish this
   app.put('/api/rolodex/:id', (req, res) => {
     db.Rolodex.update(req.body, {
       where: {
