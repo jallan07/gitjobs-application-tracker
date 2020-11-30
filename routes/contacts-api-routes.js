@@ -42,9 +42,9 @@ module.exports = (app) => {
     const {
       contactsName,
       contactsRelationship,
-      // contactsCompany,
+      contactsCompany,
       contactsTitle,
-      // contactsCity,
+      contactsCity,
       contactsPhone,
       contactsEmail,
       contactsLinkedin,
@@ -60,9 +60,9 @@ module.exports = (app) => {
     if (!contactsRelationship) {
       errors.push({ text: 'How do you know this person?' });
     }
-    // if (!contactsCity) {
-    //   errors.push({ text: 'Where do they live or work?' });
-    // }
+    if (!contactsCity) {
+      errors.push({ text: 'Where do they live or work?' });
+    }
     if (!contactsNotes) {
       errors.push({ text: 'Please add some information about this contact' });
     }
@@ -71,9 +71,9 @@ module.exports = (app) => {
       res.render('rolodex', {
         contactsName,
         contactsRelationship,
-        // contactsCompany,
+        contactsCompany,
         contactsTitle,
-        // contactsCity,
+        contactsCity,
         contactsPhone,
         contactsEmail,
         contactsLinkedin,
@@ -86,9 +86,9 @@ module.exports = (app) => {
       db.Rolodex.create({
         contactsName,
         contactsRelationship,
-        // contactsCompany,
+        contactsCompany,
         contactsTitle,
-        // contactsCity,
+        contactsCity,
         contactsPhone,
         contactsEmail,
         contactsLinkedin,
