@@ -1,15 +1,27 @@
 module.exports = (sequelize, DataTypes) => {
-  const Companies = sequelize.define('companies', {
+  const Companies = sequelize.define('Companies', {
     companyName: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
+      validate: {
+        len: [1]
+      }
+    },
+    companyEmployees: {
+      type: DataTypes.INTEGER,
+      validate: {
+        len: [1]
+      }
+    },
+    companyRevenue: {
+      type: DataTypes.STRING,
       validate: {
         len: [1]
       }
     },
     companyWebsite: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         len: [1]
       }
@@ -19,21 +31,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  // Companies.associate = (models) => {
-  //   Companies.hasMany(models.Rolodex, {
-  //     as: 'Rolodex',
-  //     foreignKey: 'id',
-  //     sourceKey: 'id'
-  //   });
-  // };
-
-  // Companies.associate = (models) => {
-  //   Companies.hasMany(models.Applications, {
-  //     as: 'Applications',
-  //     foreignKey: 'id',
-  //     sourceKey: 'id'
-  //   });
-  // };
+  Companies.associate = (models) => {
+    Companies.hasMany(models.Applications, {
+      sourceKey: 'companyName',
+      foreignKey: 'jobCompany'
+    });
+    Companies.hasMany(models.Rolodex, {
+      sourceKey: 'companyName',
+      foreignKey: 'contactsCompany'
+    });
+  };
 
   return Companies;
 };

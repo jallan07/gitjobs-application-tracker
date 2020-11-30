@@ -30,11 +30,12 @@ app.set('view engine', 'handlebars');
 //* =============================================================
 require('./routes/contacts-api-routes')(app);
 require('./routes/applications-api-routes')(app);
+require('./routes/companies-api-routes')(app);
 require('./routes/html-routes')(app);
 
 const PORT = process.env.PORT;
 
-db.sequelize.sync().then(() => {
+db.sequelize.sync({}).then(() => {
   app.listen(PORT, () => {
     console.log('App listening on port http://localhost:' + PORT);
   });
