@@ -7,7 +7,9 @@ module.exports = (app) => {
   //* PASSED TESTING IN POSTMAN
   // get all jobs
   app.get('/api/applications', (req, res) => {
-    db.Applications.findAll({}).then((jobs) => res.json(jobs));
+    db.Applications.findAll({ include: db.Companies }).then((jobs) =>
+      res.json(jobs)
+    );
   });
 
   //* PASSED TESTING IN POSTMAN
