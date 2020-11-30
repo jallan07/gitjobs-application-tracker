@@ -53,7 +53,7 @@ module.exports = (app) => {
   });
 
   // get the profile for logged in users
-  //TODO Currently index.handlebars serves as profile page - swap this for job board?
+  // TODO Currently index.handlebars serves as profile page - swap this for job board?
   app.get('/profile', isLoggedIn, (req, res) => {
     res.render('pages/profile.ejs', {
       user: req.user
