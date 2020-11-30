@@ -1,6 +1,8 @@
 // This file is used to define all routes related to reading, writing, updating, and deleting applications from the application tracker feature of the app
 const db = require('../models');
 
+// TODO Add includes companies syntax
+
 module.exports = (app) => {
   //* PASSED TESTING IN POSTMAN
   // get all jobs
