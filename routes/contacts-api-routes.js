@@ -17,9 +17,7 @@ module.exports = (app) => {
   // Get all contacts in rolodex
   //! Passed Postman Testing
   app.get('/api/rolodex', (req, res) => {
-    db.Rolodex.findAll({ include: db.Companies }).then((contacts) =>
-      res.json(contacts)
-    );
+    db.Rolodex.findAll({}).then((contacts) => res.json(contacts));
   });
 
   // Get all contacts in rolodex by company

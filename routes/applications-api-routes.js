@@ -36,6 +36,7 @@ module.exports = (app) => {
       jobHiringMgrEmail,
       jobStatus,
       jobNextStep,
+      jobCompany,
       applied
     } = req.body;
     // use the variables above in the create method below
@@ -48,6 +49,7 @@ module.exports = (app) => {
       jobHiringMgrEmail,
       jobStatus,
       jobNextStep,
+      jobCompany,
       applied
     }).then((job) => res.json(job));
   });

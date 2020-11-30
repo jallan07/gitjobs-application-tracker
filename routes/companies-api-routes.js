@@ -16,7 +16,9 @@ module.exports = (app) => {
   //* ==========================
   // Get all companies
   app.get('/api/companies', (req, res) => {
-    db.Companies.findAll({}).then((companies) => res.json(companies));
+    db.Companies.findAll({
+      include: [db.Rolodex, db.Applications]
+    }).then((companies) => res.json(companies));
   });
 
   // Get company by name
