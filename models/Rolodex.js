@@ -27,11 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       contactsCity: {
-        type: DataTypes.STRING,
-
-        validate: {
-          len: [1]
-        }
+        type: DataTypes.STRING
       },
       contactsPhone: {
         type: DataTypes.STRING
