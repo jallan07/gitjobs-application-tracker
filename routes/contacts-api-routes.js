@@ -1,22 +1,44 @@
-// This file is used to define all routes related to reading, writing, updating, and deleting contacts from the CRM feature of the app
+//! This file is used to define all routes related to reading, writing, updating,
+//! and deleting contacts from the CRM feature of the app
+
+//* ===================================================
+//* Dependencies
+//* ===================================================
 const db = require('../models');
 
+//* ===================================================
+//* Routes
+//* ===================================================
 module.exports = (app) => {
   //* ==========================
   //* GET routes
   //* ==========================
-  // Get all
-  app.get('/api/Rolodex', (req, res) => {
+  // Get all contacts in rolodex
+  //! Passed Postman Testing
+  app.get('/api/rolodex', (req, res) => {
     db.Rolodex.findAll({}).then((contacts) => res.json(contacts));
   });
 
   // TODO: Get all by City
-  // TODO: Get all by Relationship
+
+  // Get all contacts in rolodex by relationship
+  //! Passed Postman Testing
+  // TODO: Validation?
+  app.get('/api/rolodex/:relationship', (req, res) => {
+    db.Rolodex.findAll({
+      where: {
+        contactsRelationship: req.params.relationship
+      }
+    }).then((contacts) => res.json(contacts));
+  });
+
+
   //* ==========================
   //* POST ROUTES
   //* ==========================
   // Add a contact
-  app.post('/api/Rolodex', (req, res) => {
+  //! Passed Postman Testing
+  app.post('/api/rolodex', (req, res) => {
     console.log(req.body);
     const {
       contactsName,
@@ -93,8 +115,6 @@ module.exports = (app) => {
   //* ==========================
   //* Delete Routes
   //* ==========================
-  // TODO Finish this
-
   app.delete('/api/rolodex/:id', (req, res) => {
     db.Rolodex.destroy({
       where: {

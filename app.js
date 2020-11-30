@@ -32,6 +32,14 @@ require('./routes/contacts-api-routes')(app);
 require('./routes/applications-api-routes')(app);
 require('./routes/html-routes')(app);
 
+//* =============================================================
+//* Associations
+//* =============================================================
+db.Applications.belongsTo(db.Companies, {
+  targetKey: 'name',
+  foreignKey: 'companyName'
+});
+
 const PORT = process.env.PORT;
 
 db.sequelize.sync().then(() => {
