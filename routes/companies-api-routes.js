@@ -41,6 +41,10 @@ module.exports = (app) => {
       companyEmployees,
       companyRevenue,
       companyWebsite,
+      companyIndustry,
+      companySector,
+      companyCity,
+      companyState,
       companyDescription
     } = req.body;
 
@@ -49,6 +53,10 @@ module.exports = (app) => {
       companyEmployees,
       companyRevenue,
       companyWebsite,
+      companyIndustry,
+      companySector,
+      companyCity,
+      companyState,
       companyDescription
     }).then((company) => res.json(company));
   });

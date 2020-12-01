@@ -26,6 +26,30 @@ module.exports = (sequelize, DataTypes) => {
         len: [1]
       }
     },
+    companySector: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1]
+      }
+    },
+    companyIndustry: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1]
+      }
+    },
+    companyCity: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1]
+      }
+    },
+    companyState: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [1]
+      }
+    },
     companyDescription: {
       type: DataTypes.TEXT
     }
