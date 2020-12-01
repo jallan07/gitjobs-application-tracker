@@ -56,6 +56,7 @@ module.exports = (app) => {
       style: "login.css",
     });
   });
+  
   // get the profile for logged in users
   //TODO Currently index.handlebars serves as profile page - swap this for job board?
   app.get("/profile", (req, res) => {

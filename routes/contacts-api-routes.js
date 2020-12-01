@@ -12,6 +12,7 @@ const db = require('../models');
 module.exports = (app) => {
   //* ==========================
   //* GET routes
+  // TODO Add includes companies - can we specify what fields/columns?
   //* ==========================
   // Get all contacts in rolodex
   //! Passed Postman Testing
@@ -19,7 +20,14 @@ module.exports = (app) => {
     db.Rolodex.findAll({}).then((contacts) => res.json(contacts));
   });
 
-  // TODO: Get all by City
+  // Get all contacts in rolodex by company
+  app.get('/api/rolodex/:contactsCompany', (req, res) => {
+    db.Rolodex.findOne({
+      where: {
+        contactsCompany: req.body.contactsCompany
+      }
+    }).then((jobs) => res.json(jobs));
+  });
 
   // Get all contacts in rolodex by relationship
   //! Passed Postman Testing
@@ -27,7 +35,7 @@ module.exports = (app) => {
   app.get('/api/rolodex/:relationship', (req, res) => {
     db.Rolodex.findAll({
       where: {
-        contactsRelationship: req.params.relationship
+        contactsRelationship: req.body.relationship
       }
     }).then((contacts) => res.json(contacts));
   });
@@ -38,7 +46,6 @@ module.exports = (app) => {
   // Add a contact
   //! Passed Postman Testing
   app.post('/api/rolodex', (req, res) => {
-    console.log(req.body);
     const {
       contactsName,
       contactsRelationship,
@@ -81,8 +88,6 @@ module.exports = (app) => {
         contactsNotes
       });
     } else {
-      // Insert into table
-
       db.Rolodex.create({
         contactsName,
         contactsRelationship,
