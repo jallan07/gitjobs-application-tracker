@@ -78,6 +78,9 @@ module.exports = (app) => {
 
   // get the rolodex for the logged in user
   app.get('/rolodex', isLoggedIn, (req, res) => {
-    res.render('rolodex');
+    res.render('rolodex', {
+      user: req.user,
+      style: 'rolodex.css'
+    });
   });
 };
