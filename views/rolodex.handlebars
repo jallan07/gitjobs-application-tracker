@@ -2,137 +2,138 @@
 <html>
 
 <head>
-    <title>LinkedIn Node Authentication</title>
+    <title>{{title}}</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    {{!-- <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" /> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="css/{{style}}">
     </link>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <section id="add" class="container">
-    <div class="form-wrap">
-      <h1>Add A Contact</h1>
-      <p>Add a new contact to your rolodex</p>
-      <form action="/api/rolodex" method="POST">
-        <div class="input-group">
-          <label for="contactsName">Name of the contact</label>
-          <input type="text" name="contactsName" id="contactsName" class="input-box" placeholder="Name"
-            maxlength="100" value={{contactsName}}>
+    <section class="container my-5">
+        {{!-- Search --}}
+        <div class="search-box mx-auto">
+            <input placeholder="Type to search rolodex..." id="search-users" class="search-users" type="text">
+            <button class="search-box-action">Search</button>
         </div>
-        <div class="input-group">
-          <label for="contactsRelationship">Relationship</label>
-          <input type="text" name="contactsRelationship" id="contactsRelationship" class="input-box" placeholder="Relationship"
-          maxlength="100" value={{contactsRelationship}}>
-        </div>
-        <div class="input-group">
-          <label for="contactsTitle">Company</label>
-          <input type="text" name="contactsTitle" id="contactsTitle" class="input-box" placeholder="Company"
-          maxlength="100" value={{contactsCompany}}>
-        </div>
-         <div class="input-group">
-          <label for="contactsCity">City</label>
-          <input type="text" name="contactsCity" id="contactsCity" class="input-box" placeholder="City"
-          maxlength="100" value={{contactsCity}}>
-        </div>
-         <div class="input-group">
-          <label for="contactsTitle">Title</label>
-          <input type="text" name="contactsTitle" id="contactsTitle" class="input-box" placeholder="Title"
-          maxlength="100" value={{contactsTitle}}>
-        </div>
-         <div class="input-group">
-          <label for="contactsPhone">Phone</label>
-          <input type="text" name="contactsPhone" id="contactsPhone" class="input-box" placeholder="Phone"
-          maxlength="100" value={{contactsPhone}}>
-        </div>
-         <div class="input-group">
-          <label for="contactsEmail">Email</label>
-          <input type="text" name="contactsEmail" id="contactsEmail" class="input-box" placeholder="Email"
-          maxlength="100" value={{contactsEmail}}>
-        </div>
-         <div class="input-group">
-          <label for="contactsGithub">GitHub</label>
-          <input type="text" name="contactsGithub" id="contactsGithub" class="input-box" placeholder="Github"
-          maxlength="100" value={{contactsGithub}}>
-        </div>
-        <div class="input-group">
-          <label for="contactsLinkedin">LinkedIn</label>
-          <input type="text" name="contactsLinkedin" id="contactsLinkedin" class="input-box" placeholder="Linkedin"
-          maxlength="100" value={{contactsLinkedin}}>
-        </div>
-        <div class="input-group">
-          <label for="contactsLinkedin">LinkedIn</label>
-          <input type="text" name="contactsLinkedin" id="contactsLinkedin" class="input-box" placeholder="Linkedin"
-          maxlength="100" value={{contactsLinkedin}}>
-        </div>
-
-        <div class="form-group appliedBtns">
-          <label for="applied">Have you applied yet?</label><br>
-          <input class = "appliedBtns" type="radio" name="applied" value="1" checked>Yes<br>
-          <input class = "appliedBtns" type="radio" name="applied" value="0">No
-        </div>
-        <input type="submit" value="Add Contact" class="btn btn-reverse">
-      </form>
-    </div>
-  </section>
-
-  <section class="container">
-
-    <div class="search-box">
-        <input placeholder="Type to search rolodex..." id="search-users" class="search-users" type="text">
-        <button class="search-box-action">Search</button>
-    </div>
-
-    <div class="container">
-        <div class="row row-cols-1 row-cols-md-4">
-            {{!-- {{#each contact}} --}}
-            <div class="col mx-3 my-3">
-                <div class="card user">
-                    <div class="user-img">
-                        <img src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-1.svg" alt="Rahul" />
-                    </div>
-                <div class="user-data">
-                    <h2>Name Placeholder{{contactsName}}</h2>
-                    <a href="mailto:{{contactsEmail}}">email@placeholder.com{{contactsEmail}}</a>
-                    <div class="user-designation">Title Placeholder{{contactsTitle}}</div>
-                </div>
-                <div class="user-controls">
-                    <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg></a>
-                    <a class="delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-trash-2">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg></a>
-                    <a class="update" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg></a>
-                </div>
-                </div>
+        <div class="row">
+            <div class="mx-auto">
+                <button class="btn btn-submit py-3 px-5"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-plus-circle">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg> &nbsp;creeate a contact</button>
             </div>
-            {{!-- {{/each}} --}}
         </div>
-    </div>
-
     </section>
-
+    {{!-- Cards --}}
+    <section class="container">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-4">
+                {{!--  #each contact --}}
+                <div class="col mx-3 my-3">
+                    <div class="card user">
+                        <div class="user-img">
+                            <img src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-1.svg" alt="Rahul" />
+                        </div>
+                    <div class="user-data">
+                        <h2>Name Placeholder{{contactsName}}</h2>
+                        <a href="mailto:{{contactsEmail}}">email@placeholder.com{{contactsEmail}}</a>
+                        <div class="user-designation">Title Placeholder{{contactsTitle}}</div>
+                    </div>
+                    <div class="user-controls">
+                        <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-plus-circle">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg></a>
+                        <a class="delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-trash-2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                        </svg></a>
+                        <a class="update" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-edit">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg></a>
+                    </div>
+                    </div>
+                </div>
+                {{!-- each --}}
+            </div>
+        </div>
+    </section>
+    {{!-- Form --}}
+    <section id="add" class="container my-5">
+        <h3 class="mx-auto text-center my-5">Save a new contact to your Rolodex using the form below!</h3>
+        <div class="form-wrap">
+        <form action="/api/rolodex" method="POST">
+            <div class="input-group my-4">
+            {{!-- <label for="contactsName">Name of the contact</label> --}}
+            <input type="text" name="contactsName" id="contactsName" class="input-box" placeholder="Name of the contact"
+                maxlength="100" value={{contactsName}}>
+            </div>
+            <div class="input-group my-4">
+            {{!-- <label for="contactsRelationship">Relationship</label> --}}
+            <input type="text" name="contactsRelationship" id="contactsRelationship" class="input-box" placeholder="Relationship with contact"
+            maxlength="100" value={{contactsRelationship}}>
+            </div>
+            <div class="input-group my-4">
+            {{!-- <label for="contactsCity">City</label> --}}
+            <input type="text" name="contactsCity" id="contactsCity" class="input-box" placeholder="City"
+            maxlength="100" value={{contactsCity}}>
+            </div>
+            <div class="input-group my-4">
+            {{!-- <label for="contactsCompany">Company</label> --}}
+            <input type="text" name="contactsCompany" id="contactsCompany" class="input-box" placeholder="Company"
+            maxlength="100" value={{contactsCompany}}>
+            </div>
+            <div class="input-group my-4">
+            {{!-- <label for="contactsTitle">Title</label> --}}
+            <input type="text" name="contactsTitle" id="contactsTitle" class="input-box" placeholder="Title"
+            maxlength="100" value={{contactsTitle}}>
+            </div>
+            <div class="input-group my-4">
+            {{!-- <label for="contactsPhone">Phone</label> --}}
+            <input type="text" name="contactsPhone" id="contactsPhone" class="input-box" placeholder="Phone"
+            maxlength="100" value={{contactsPhone}}>
+            </div>
+            <div class="input-group my-4">
+            {{!-- <label for="contactsEmail">Email</label> --}}
+            <input type="text" name="contactsEmail" id="contactsEmail" class="input-box" placeholder="Email"
+            maxlength="100" value={{contactsEmail}}>
+            </div>
+            <div class="input-group my-4">
+            {{!-- <label for="contactsGithub">GitHub</label> --}}
+            <input type="text" name="contactsGithub" id="contactsGithub" class="input-box" placeholder="Github"
+            maxlength="100" value={{contactsGithub}}>
+            </div>
+            <div class="input-group my-4">
+            {{!-- <label for="contactsLinkedin">LinkedIn</label> --}}
+            <input type="text" name="contactsLinkedin" id="contactsLinkedin" class="input-box" placeholder="Linkedin"
+            maxlength="100" value={{contactsLinkedin}}>
+            </div>
+            <div class="input-group my-4">
+            {{!-- <label for="contactsNotes">Notes</label> --}}
+            <input type="text" name="contactsNotes" id="contactsNotes" class="input-box" placeholder="Notes"
+            maxlength="100" value={{contactsNotes}}>
+            </div>
+            <input type="submit" value="Save Contact" class="btn btn-submit btn-reverse">
+        </form>
+        </div>
+    </section>
 </body>
 
 </html>
