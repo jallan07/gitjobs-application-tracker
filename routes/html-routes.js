@@ -48,11 +48,13 @@ module.exports = (app) => {
   // index route loads main page
   // TODO Currently index.handlebars (CV page) - do we want this to be the job board?
   app.get('/', (req, res) => {
-    res.render('index');
+    res.render('login', {
+      style: 'login.css'
+    });
   });
 
   app.get('/login', (req, res) => {
-    res.render('pages/login', {
+    res.render('login', {
       style: 'login.css'
     });
   });
@@ -60,14 +62,22 @@ module.exports = (app) => {
   // get the profile for logged in users
   // TODO Currently index.handlebars serves as profile page - swap this for job board?
   app.get('/profile', isLoggedIn, (req, res) => {
-    res.render('pages/profile', {
+    res.render('profile', {
       user: req.user,
       style: 'profile.css'
     });
   });
 
+  // TODO Build a /job-boards page that displays all job applications and their status
+  app.get('/jobboard', isLoggedIn, (req, res) => {
+    res.render('applications', {
+      user: req.user,
+      style: 'applications.css'
+    });
+  });
+
   // get the rolodex for the logged in user
-  app.get('/rolodex', isLoggedIn, function (req, res) {
+  app.get('/rolodex', isLoggedIn, (req, res) => {
     res.render('rolodex');
   });
 };
