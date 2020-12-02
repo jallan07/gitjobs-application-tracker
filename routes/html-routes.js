@@ -55,7 +55,8 @@ module.exports = (app) => {
 
   app.get('/login', (req, res) => {
     res.render('login', {
-      style: 'login.css'
+      style: 'login.css',
+      title: 'Login | GitJobs'
     });
   });
 
@@ -64,7 +65,8 @@ module.exports = (app) => {
   app.get('/profile', isLoggedIn, (req, res) => {
     res.render('profile', {
       user: req.user,
-      style: 'profile.css'
+      style: 'profile.css',
+      title: 'User Profile | GitJobs'
     });
   });
 
@@ -72,7 +74,8 @@ module.exports = (app) => {
   app.get('/jobboard', isLoggedIn, (req, res) => {
     res.render('applications', {
       user: req.user,
-      style: 'applications.css'
+      style: 'applications.css',
+      title: 'Application Tracker & Job Board | GitJobs'
     });
   });
 
@@ -80,7 +83,8 @@ module.exports = (app) => {
   app.get('/rolodex', isLoggedIn, (req, res) => {
     res.render('rolodex', {
       user: req.user,
-      style: 'rolodex.css'
+      style: 'rolodex.css',
+      title: 'Rolodex & CRM | GitJobs'
     });
   });
 };
