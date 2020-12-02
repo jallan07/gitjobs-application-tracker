@@ -20,16 +20,16 @@
     <section class="container">
         <div class="container">
             <div class="row row-cols-1 row-cols-md-4">
-                {{#each rolodex}}
+                {{#each contacts}}
                 <div class="col mx-3 my-3">
                     <div class="card user">
                         <div class="user-img">
                             <img src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-1.svg" alt="Rahul" />
                         </div>
                     <div class="user-data">
-                        <h2>Name Placeholder{{contactsName}}</h2>
-                        <a href="mailto:{{contactsEmail}}">email@placeholder.com{{contactsEmail}}</a>
-                        <div class="user-designation">Title Placeholder{{contactsTitle}}</div>
+                        <h2>{{dataValues.contactsName}}</h2>
+                        <a href="mailto:{{dataValues.contactsEmail}}">email@placeholder.com{{dataValues.contactsEmail}}</a>
+                        <div class="user-designation">Title Placeholder{{dataValues.contactsTitle}}</div>
                     </div>
                     <div class="user-controls">
                         <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

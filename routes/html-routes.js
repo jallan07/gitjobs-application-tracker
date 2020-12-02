@@ -79,13 +79,11 @@ module.exports = (app) => {
     });
   });
 
-  // get the rolodex for the logged in user
-  app.get('/rolodex', isLoggedIn, (req, res) => {
-    res.render('rolodex', {
-      user: req.user,
-      style: 'rolodex.css',
-      title: 'Rolodex & CRM | GitJobs'
-    });
-  });
+  //   // get the rolodex for the logged in user
+  //   app.get('/rolodex', isLoggedIn, (req, res) => {
+  //     res.render('rolodex', {
+
+  //     });
+  //   });
 };
-      // contact: res.data,
+// contact: res.data,
