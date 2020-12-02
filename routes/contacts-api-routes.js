@@ -17,7 +17,7 @@ module.exports = (app) => {
   // Get all contacts in rolodex
   //! Passed Postman Testing
   app.get('/api/rolodex', (req, res) => {
-    db.Rolodex.findAll({}).then((contacts) => res.json(contacts));
+    db.Rolodex.findAll({}).then((contacts) => res.render('rolodex', contacts));
   });
 
   // Get all contacts in rolodex by company
@@ -55,54 +55,22 @@ module.exports = (app) => {
       contactsPhone,
       contactsEmail,
       contactsLinkedin,
-      contactGithub,
+      contactsGithub,
       contactsNotes
     } = req.body;
 
-    const errors = [];
-    // Validate Fields
-    if (!contactsName) {
-      errors.push({ text: 'Please add a name' });
-    }
-    if (!contactsRelationship) {
-      errors.push({ text: 'How do you know this person?' });
-    }
-    if (!contactsCity) {
-      errors.push({ text: 'Where do they live or work?' });
-    }
-    if (!contactsNotes) {
-      errors.push({ text: 'Please add some information about this contact' });
-    }
-    // Check for errors
-    if (errors.length > 0) {
-      res.render('rolodex', {
-        contactsName,
-        contactsRelationship,
-        contactsCompany,
-        contactsTitle,
-        contactsCity,
-        contactsPhone,
-        contactsEmail,
-        contactsLinkedin,
-        contactGithub,
-        contactsNotes
-      });
-    } else {
-      db.Rolodex.create({
-        contactsName,
-        contactsRelationship,
-        contactsCompany,
-        contactsTitle,
-        contactsCity,
-        contactsPhone,
-        contactsEmail,
-        contactsLinkedin,
-        contactGithub,
-        contactsNotes
-      })
-        .then((contact) => res.json(contact))
-        .catch((err) => console.log(err));
-    }
+    db.Rolodex.create({
+      contactsName,
+      contactsRelationship,
+      contactsCompany,
+      contactsTitle,
+      contactsCity,
+      contactsPhone,
+      contactsEmail,
+      contactsLinkedin,
+      contactsGithub,
+      contactsNotes
+    }).then((contact) => res.redirect('/rolodex'));
   });
   //* ==========================
   //* Put Routes
