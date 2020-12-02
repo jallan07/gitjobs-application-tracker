@@ -61,15 +61,22 @@ form {
   margin-bottom: 30px;
 }
 
+.search-users {
+  height: 50px;
+  width: 500px;
+}
+
+input {
+  height: 40px;
+}
+
 .search-users,
 input {
-  width: 500px;
   max-width: 100%;
   border: none;
   background: #ffffff;
-  height: 50px;
   border-radius: 40px;
-  font-size: 16px;
+  font-size: 15px;
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.1);
   padding: 5px 15px;
   box-sizing: border-box;
