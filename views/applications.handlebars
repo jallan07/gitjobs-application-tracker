@@ -35,13 +35,13 @@
         </div>
     </div>
     {{!-- Search --}}
-    <div class="search-box mx-auto my-3">
-        <input placeholder="Type to search rolodex..." id="search-users" class="search-users" type="text">
-        <button class="search-box-action">Search</button>
-    </div>
-    <div class="row">
-        <div class="col-md-4 my-2 mx-auto">
-            <button class="btn btn-submit py-3 px-5 mx-auto" data-toggle="modal" data-target="#exampleModalCenter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+        <form action="/api/applications/search" class="search-box mx-auto">
+            <input placeholder="Type to search applications..." id="search-apps" class="search-users" type="search" name="term">
+            <input type="submit" value="Search" class="search-box-action"></input>
+        </form>
+        <div class="row">
+            <div class="col-md-4 my-2 mx-auto">
+                <button class="btn btn-submit py-3 px-5 mx-auto" data-toggle="modal" data-target="#exampleModalCenter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                         viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="feather feather-plus-circle">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -55,7 +55,7 @@
     <section class="container">
         <div class="container">
             <div class="row row-cols-1 row-cols-md-4">
-                {{!-- #each application --}}
+                {{#each applications}}
                 <div class="col mx-auto my-3">
                     <div class="card user">
                     <div class="user-data">
@@ -66,7 +66,7 @@
                     </div>
                     <div class="user-controls">
 
-                        <a class="add addContact" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        <a class="add addApp" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="feather feather-plus-circle">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -74,7 +74,7 @@
                             <line x1="8" y1="12" x2="16" y2="12"></line>
                         </svg></a>
 
-                        <a class="delete deleteContact"  href="#" data-id="{{dataValues.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        <a class="delete deleteApp"  href="#" data-id="{{dataValues.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="feather feather-trash-2">
                             <polyline points="3 6 5 6 21 6"></polyline>
@@ -83,7 +83,7 @@
                             <line x1="14" y1="11" x2="14" y2="17"></line>
                         </svg></a>
 
-                        <a class="update updateContact" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        <a class="update updateApp" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="feather feather-edit">
                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -93,7 +93,7 @@
                     </div>
                     </div>
                 </div>
-                {{!-- /each --}}
+                {{/each}}
             </div>
         </div>
     </section>

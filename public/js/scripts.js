@@ -7,21 +7,31 @@ $(document).ready(function () {
   //   myLogin.style.background = 'yellow';
   // });
   //* ==========================
-  //* rolodex
+  //* Rolodex
   //* ==========================
-  // Adding event listeners to the form to create a new object, and the button to delete
-  // an Author
-  // $(document).on('submit', '#contact-form', handleContactFormSubmit);
-  // $(document).on('click', '.delete', function (e) {});
-  // Function for retrieving the contacts
-  // $('#addContactForm').on('submit', function (e) {
-  //   e.preventDefault();
-  //   $.post('/api/rolodex', $('#addContactForm').serialize(), function (data) {
-  //     console.log(data);
-  //   });
-  // });
-  // const getContacts = () => {
-  //   $.get('/api/rolodex');
-  // };
-  // getContacts();
+
+  $(document).on('click', '.deleteContact', function (e) {
+    e.preventDefault();
+    const id = $(this).data('id');
+    $.ajax({
+      url: `/api/rolodex/${id}`,
+      method: 'DELETE'
+    }).then(() => {
+      window.location.reload();
+    });
+  });
+
+  //* ==========================
+  //* Job Board
+  //* ==========================
+  $(document).on('click', '.deleteApp', function (e) {
+    e.preventDefault();
+    const id = $(this).data('id');
+    $.ajax({
+      url: `/api/applications/${id}`,
+      method: 'DELETE'
+    }).then(() => {
+      window.location.reload();
+    });
+  });
 });

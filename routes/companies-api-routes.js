@@ -64,13 +64,13 @@ module.exports = (app) => {
   //* ==========================
   //* Put Routes
   //* ==========================
-  app.put('/api/rolodex/:id', (req, res) => {
-    db.Companies.update(req.body, {
-      where: {
-        id: req.body.id
-      }
-    }).then((contact) => res.json(contact));
-  });
+  // app.put('/api/rolodex/:id', (req, res) => {
+  //   db.Companies.update(req.body, {
+  //     where: {
+  //       id: req.body.id
+  //     }
+  //   }).then((contact) => res.json(contact));
+  // });
 
   //* ==========================
   //* Delete Routes
