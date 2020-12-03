@@ -7,6 +7,22 @@ const bodyParser = require('body-parser');
 
 const db = require('./models');
 
+//* ================================
+//* Twilio - needs further build
+//* ================================
+// const Twilio = require('twilio');
+// const accountSid = process.env.twilioSID;
+// const authToken = process.env.twilioAuth;
+// const client = new Twilio(accountSid, authToken);
+
+// client.messages
+//   .create({
+//     body: 'Hello from GitJobs! Twilio integration FTW!',
+//     to: '+18042002897',
+//     from: '+19382018822'
+//   })
+//   .then((message) => console.log(message.sid));
+
 // Body Parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
