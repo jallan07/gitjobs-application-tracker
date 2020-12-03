@@ -72,7 +72,7 @@
                             <line x1="12" y1="8" x2="12" y2="16"></line>
                             <line x1="8" y1="12" x2="16" y2="12"></line>
                         </svg></a>
-                        <a class="delete deleteContact"  href="#" data-id="{{dataValues.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        <a class="delete deleteApp"  href="#" data-id="{{dataValues.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="feather feather-trash-2">
                             <polyline points="3 6 5 6 21 6"></polyline>
@@ -108,68 +108,64 @@
             <div class="modal-body">
                 {{!-- Form --}}
                 <div class="form-wrap">
-                <form action="/api/rolodex" id="addContactForm" method="POST">
+                <form action="/api/applications" id="addApplicationForm" method="POST">
                     <div class="row mx-auto">
                         <div class="col-md-6 input-group my-2">
                         {{!-- <label for="contactsName">Name of the contact</label> --}}
-                            <input type="text" name="contactsName" id="contactsName" class="input-box" placeholder="Name of the contact"
-                                maxlength="100" value={{contactsName}}>
+                        <input type="text" name="jobName" id="jobName" class="input-box" placeholder="Name/Title of the position"
+                                maxlength="100" value={{jobName}}>
                         </div>
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsRelationship">Relationship</label> --}}
-                            <input type="text" name="contactsRelationship" id="contactsRelationship" class="input-box" placeholder="Relationship with contact"
-                            maxlength="100" value={{contactsRelationship}}>
+                        {{!-- <label for="contactsLinkedin">LinkedIn</label> --}}
+                        <input type="text" name="jobCompany" id="jobCompany" class="input-box" placeholder="Name of the company"
+                        maxlength="100" value={{jobCompany}}>
                         </div>
+
                     </div>
                     <div class="row mx-auto">
                         <div class="col-md-6 input-group my-2">
                         {{!-- <label for="contactsCompany">Company</label> --}}
-                        <input type="text" name="contactsCompany" id="contactsCompany" class="input-box" placeholder="Company"
-                        maxlength="100" value={{contactsCompany}}>
+                        <input type="text" name="jobSalary" id="jobSalary" class="input-box" placeholder="Anticipated salary"
+                        maxlength="100" value={{jobSalary}}>
                         </div>
                         <div class="col-md-6 input-group my-2">
                         {{!-- <label for="contactsCity">City</label> --}}
-                        <input type="text" name="contactsCity" id="contactsCity" class="input-box" placeholder="City"
-                        maxlength="100" value={{contactsCity}}>
+                        <input type="text" name="jobHiringMgrName" id="jobHiringMgrName" class="input-box" placeholder="Hiring manager's name"
+                        maxlength="100" value={{jobHiringMgrName}}>
                         </div>
                     </div>
                     <div class="row mx-auto">
                         <div class="col-md-6 input-group my-2">
                         {{!-- <label for="contactsTitle">Title</label> --}}
-                        <input type="text" name="contactsTitle" id="contactsTitle" class="input-box" placeholder="Title"
-                        maxlength="100" value={{contactsTitle}}>
+                        <input type="text" name="jobHiringMgrTitle" id="jobHiringMgrTitle" class="input-box" placeholder="Hiring manager's title"
+                        maxlength="100" value={{jobHiringMgrTitle}}>
                         </div>
                         <div class="col-md-6 input-group my-2">
                         {{!-- <label for="contactsPhone">Phone</label> --}}
-                        <input type="text" name="contactsPhone" id="contactsPhone" class="input-box" placeholder="Phone"
-                        maxlength="100" value={{contactsPhone}}>
+                        <input type="text" name="jobHiringMgrEmail" id="jobHiringMgrEmail" class="input-box" placeholder="Hiring manager's email"
+                        maxlength="100" value={{jobHiringMgrEmail}}>
                         </div>
                     </div>
                     <div class="row mx-auto">
                         <div class="col-md-6 input-group my-2">
                         {{!-- <label for="contactsEmail">Email</label> --}}
-                        <input type="text" name="contactsEmail" id="contactsEmail" class="input-box" placeholder="Email"
-                        maxlength="100" value={{contactsEmail}}>
+                        <input type="text" name="jobStatus" id="jobStatus" class="input-box" placeholder="Status of the application"
+                        maxlength="100" value={{jobStatus}}>
                         </div>
                         <div class="col-md-6 input-group my-2">
                         {{!-- <label for="contactsGithub">GitHub</label> --}}
-                        <input type="text" name="contactsGithub" id="contactsGithub" class="input-box" placeholder="Github"
-                        maxlength="100" value={{contactsGithub}}>
+                        <input type="text" name="jobNextStep" id="jobNextStep" class="input-box" placeholder="Next step"
+                        maxlength="100" value={{jobNextStep}}>
                         </div>
                     </div>
                     <div class="row mx-auto">
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsLinkedin">LinkedIn</label> --}}
-                        <input type="text" name="contactsLinkedin" id="contactsLinkedin" class="input-box" placeholder="Linkedin"
-                        maxlength="100" value={{contactsLinkedin}}>
-                        </div>
-                        <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsNotes">Notes</label> --}}
-                        <input type="text" name="contactsNotes" id="contactsNotes" class="input-box" placeholder="Notes"
-                        maxlength="100" value={{contactsNotes}}>
+                        {{!-- <label for="contactsRelationship">Relationship</label> --}}
+                        
+                        <input type="text" name="jobLink" id="jobLink" class="input-box" placeholder="Link to the posting"
+                            maxlength="100" value={{jobLink}}>
                         </div>
                     </div>
-                    {{!-- TODO MC - I moved the submit button back into the form for the sake opf, but I think you can  --}}
                     <div class="modal-footer">
                         {{!-- <button type="button" class="btn btn-primary">Save new contact</button> --}}
                         <input type="submit" id="addContactBtn" value="Save Contact" class="btn btn-submit btn-reverse my-5">

@@ -41,10 +41,7 @@ module.exports = (app) => {
         style: 'landing.css',
         title: 'Companies | GitJobs'
       };
-      // res.json(data);
-      console.log(hbsObject);
       res.render('landing', hbsObject);
-      console.log(hbsObject);
     });
   });
 
