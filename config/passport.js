@@ -1,9 +1,5 @@
 const passport = require('passport');
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
-// const linkedinKeys = require('./linkedin-keys');
-// require('dotenv').config();
-
-// const User = require('../models').Users;
 
 // Login using the Linkedin Strategy
 passport.use(
@@ -16,37 +12,6 @@ passport.use(
     },
     function (token, tokenSecret, profile, done) {
       return done(null, profile);
-      /*
-      process.nextTick(function () {
-        User.findOne({
-          where: {
-            linkedinID: profile.id
-          }
-        }, function (err, user) {
-          if (err) {
-            return done(err);
-          }
-          // No user was found... so create a new user with values from Facebook (all the profile. stuff)
-          if (!user) {
-            user = new User({
-              linkedinID: profile.id,
-              firstName: profile.givenName,
-              lastName: profile.familyName,
-              email: profile.emails[0].value
-              // now in the future searching on User.findOne({'facebook.id': profile.id } will match because of this next line
-              // facebook: profile._json
-            });
-            user.save(function (err) {
-              if (err) console.log(err);
-              return done(err, user);
-            });
-          } else {
-            // found user. Return
-            return done(err, user);
-          }
-        });
-      });
-       */
     }
   )
 );
