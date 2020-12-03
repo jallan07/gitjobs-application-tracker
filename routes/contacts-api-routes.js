@@ -52,7 +52,7 @@ module.exports = (app) => {
       const hbsObject = {
         contacts: data,
         user: req.user,
-        style: 'rolodex.css',
+        style: 'https://localhost:3000/public/css/rolodex.css',
         title: 'Rolodex & CRM | GitJobs'
       };
       res.render('rolodex', hbsObject);
