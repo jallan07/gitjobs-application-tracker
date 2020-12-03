@@ -5,7 +5,7 @@ $(document).ready(() => {
   $(document).on('click', '.delete', function (e) {});
   // Function for retrieving the contacts
 
-  $('#addContactForm').on('submit', function (e) {
+  $('#addContactBtn').on('click', function (e) {
     e.preventDefault();
     $.post('/api/rolodex', $('#addContactForm').serialize(), function (data) {
       console.log(data);
