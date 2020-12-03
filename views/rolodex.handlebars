@@ -1,354 +1,155 @@
-<!DOCTYPE html>
-<html>
+    <section class="container my-5">
+        {{!-- Search --}}
+        <div class="search-box mx-auto">
+            <input placeholder="Type to search rolodex..." id="search-users" class="search-users" type="text">
+            <button class="search-box-action">Search</button>
+        </div>
+        <div class="row">
+            <div class="mx-auto">
+                <button class="btn btn-submit py-3 px-5" data-toggle="modal" data-target="#exampleModalCenter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-plus-circle">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg> &nbsp;create a contact</button>
+            </div>
+        </div>
+    </section>
+    {{!-- Cards --}}
+    <section class="container">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-4">
+                {{#each contacts}}
+                <div class="col mx-3 my-3">
+                    <div class="card user">
+                        <div class="user-img">
+                            <img src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-1.svg" alt="Rahul" />
+                        </div>
+                    <div class="user-data">
+                        <h2>{{dataValues.contactsName}}</h2>
+                        <a href="mailto:{{dataValues.contactsEmail}}">email@placeholder.com{{dataValues.contactsEmail}}</a>
+                        <div class="user-designation">Title Placeholder{{dataValues.contactsTitle}}</div>
+                    </div>
+                    <div class="user-controls">
 
-<head>
-    <title>LinkedIn Node Authentication</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" />
-    <link rel="stylesheet" href="css/{{style}}">
-    </link>
+                        <a class="add addContact" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-plus-circle">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg></a>
 
-</head>
+                        <a class="delete deleteContact"  href="#" data-id="{{dataValues.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-trash-2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                        </svg></a>
 
-<body>
-    <section id="add" class="container">
-    <div class="form-wrap">
-      <h1>Add A Contact</h1>
-      <p>Add a new contact to your rolodex</p>
-      {{#each errors}}
-      <div class="error">
-        <p>ERRORS EVERYWHERE!</p>
-      </div>
-      {{/each}}
-      <form action="/api/rolodex" method="POST">
-        <div class="input-group">
-          <label for="contactsName">Name of the contact</label>
-          <input type="text" name="contactsName" id="contactsName" class="input-box" placeholder="Name"
-            maxlength="100" value={{contactsName}}>
-        </div>
-        <div class="input-group">
-          <label for="contactsRelationship">Relationship</label>
-          <input type="text" name="contactsRelationship" id="contactsRelationship" class="input-box" placeholder="Relationship"
-          maxlength="100" value={{contactsRelationship}}>
-        </div>
-        <div class="input-group">
-          <label for="contactsTitle">Company</label>
-          <input type="text" name="contactsTitle" id="contactsTitle" class="input-box" placeholder="Company"
-          maxlength="100" value={{contactsCompany}}>
-        </div>
-         <div class="input-group">
-          <label for="contactsCity">City</label>
-          <input type="text" name="contactsCity" id="contactsCity" class="input-box" placeholder="City"
-          maxlength="100" value={{contactsCity}}>
-        </div>
-         <div class="input-group">
-          <label for="contactsTitle">Title</label>
-          <input type="text" name="contactsTitle" id="contactsTitle" class="input-box" placeholder="Title"
-          maxlength="100" value={{contactsTitle}}>
-        </div>
-         <div class="input-group">
-          <label for="contactsPhone">Phone</label>
-          <input type="text" name="contactsPhone" id="contactsPhone" class="input-box" placeholder="Phone"
-          maxlength="100" value={{contactsPhone}}>
-        </div>
-         <div class="input-group">
-          <label for="contactsEmail">Email</label>
-          <input type="text" name="contactsEmail" id="contactsEmail" class="input-box" placeholder="Email"
-          maxlength="100" value={{contactsEmail}}>
-        </div>
-         <div class="input-group">
-          <label for="contactsGithub">GitHub</label>
-          <input type="text" name="contactsGithub" id="contactsGithub" class="input-box" placeholder="Github"
-          maxlength="100" value={{contactsGithub}}>
-        </div>
-        <div class="input-group">
-          <label for="contactsLinkedin">LinkedIn</label>
-          <input type="text" name="contactsLinkedin" id="contactsLinkedin" class="input-box" placeholder="Linkedin"
-          maxlength="100" value={{contactsLinkedin}}>
-        </div>
-        <div class="input-group">
-          <label for="contactsLinkedin">LinkedIn</label>
-          <input type="text" name="contactsLinkedin" id="contactsLinkedin" class="input-box" placeholder="Linkedin"
-          maxlength="100" value={{contactsLinkedin}}>
-        </div>
+                        <a class="update updateContact" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-edit">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg></a>
 
-        {{!-- <div class="form-group appliedBtns">
-          <label for="applied">Have you applied yet?</label><br>
-          <input class = "appliedBtns" type="radio" name="applied" value="1" checked>Yes<br>
-          <input class = "appliedBtns" type="radio" name="applied" value="0">No
-        </div> --}}
-        <input type="submit" value="Add Contact" class="btn btn-reverse">
-      </form>
-    </div>
-  </section>
-    <div class="search-box">
-        <input placeholder="Type to Search..." id="search-users" class="search-users" type="text">
-        <button class="search-box-action">Search</button>
-    </div>
-    <div class="users-container">
-        <div class="user">
-            <div class="user-img"><img
-                    src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-1.svg" alt="Rahul" />
-            </div>
-            <div class="user-data">
-                <h2>Baxter </h2><a href="#">(email1@example.com)</a>
-                <div class="user-designation">Angular Developer</div>
-            </div>
-            <div class="user-controls">
-                <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg></a>
-                <a class="delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-trash-2">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg></a>
-                <a class="update" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg></a>
+                    </div>
+                    </div>
+                </div>
+                {{/each}}
             </div>
         </div>
-        <div class="user">
-            <div class="user-img"><img
-                    src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-2.svg"
-                    alt="nelson mandela" /></div>
-            <div class="user-data">
-                <h2>person</h2><a href="#">(person@example.com)</a>
-                <div class="user-designation">Social Activist</div>
+    </section>
+    <section id="add" class="container my-5">
+        {{!-- <!-- Modal --> --}}
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title mx-5 text-center" id="exampleModalLongTitle">Save a new contact to your Rolodex using the form below!</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="user-controls">
-                <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg></a>
-                <a class="delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-trash-2">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg></a>
-                <a class="update" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg></a>
+            <div class="modal-body">
+                {{!-- Form --}}
+                <div class="form-wrap">
+                <form action="/api/rolodex" id="addContactForm" method="POST">
+                    <div class="row mx-auto">
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsName">Name of the contact</label> --}}
+                            <input type="text" name="contactsName" id="contactsName" class="input-box" placeholder="Name of the contact"
+                                maxlength="100" value={{contactsName}}>
+                        </div>
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsRelationship">Relationship</label> --}}
+                            <input type="text" name="contactsRelationship" id="contactsRelationship" class="input-box" placeholder="Relationship with contact"
+                            maxlength="100" value={{contactsRelationship}}>
+                        </div>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsCompany">Company</label> --}}
+                        <input type="text" name="contactsCompany" id="contactsCompany" class="input-box" placeholder="Company"
+                        maxlength="100" value={{contactsCompany}}>
+                        </div>
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsCity">City</label> --}}
+                        <input type="text" name="contactsCity" id="contactsCity" class="input-box" placeholder="City"
+                        maxlength="100" value={{contactsCity}}>
+                        </div>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsTitle">Title</label> --}}
+                        <input type="text" name="contactsTitle" id="contactsTitle" class="input-box" placeholder="Title"
+                        maxlength="100" value={{contactsTitle}}>
+                        </div>
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsPhone">Phone</label> --}}
+                        <input type="text" name="contactsPhone" id="contactsPhone" class="input-box" placeholder="Phone"
+                        maxlength="100" value={{contactsPhone}}>
+                        </div>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsEmail">Email</label> --}}
+                        <input type="text" name="contactsEmail" id="contactsEmail" class="input-box" placeholder="Email"
+                        maxlength="100" value={{contactsEmail}}>
+                        </div>
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsGithub">GitHub</label> --}}
+                        <input type="text" name="contactsGithub" id="contactsGithub" class="input-box" placeholder="Github"
+                        maxlength="100" value={{contactsGithub}}>
+                        </div>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsLinkedin">LinkedIn</label> --}}
+                        <input type="text" name="contactsLinkedin" id="contactsLinkedin" class="input-box" placeholder="Linkedin"
+                        maxlength="100" value={{contactsLinkedin}}>
+                        </div>
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsNotes">Notes</label> --}}
+                        <input type="text" name="contactsNotes" id="contactsNotes" class="input-box" placeholder="Notes"
+                        maxlength="100" value={{contactsNotes}}>
+                        </div>
+                    </div>
+                    {{!-- TODO MC - I moved the submit button back into the form for the sake opf, but I think you can  --}}
+                    <div class="modal-footer">
+                        {{!-- <button type="button" class="btn btn-primary">Save new contact</button> --}}
+                        <input type="submit" id="addContactBtn" value="Save Contact" class="btn btn-submit btn-reverse my-5">
+                        {{!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Done!</button> --}}
+                    </div>
+                    {{!-- <input type="submit" value="Save Contact" class="btn btn-submit btn-reverse my-5"> --}}
+                </form>
             </div>
-        </div>
-        <div class="user">
-            <div class="user-img"><img
-                    src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-3.svg"
-                    alt="barack obama" /> </div>
-            <div class="user-data">
-                <h2>Barack Obama</h2><a href="#">(barackobama@example.com)</a>
-                <div class="user-designation">Politician</div>
             </div>
-            <div class="user-controls">
-                <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg></a>
-                <a class="delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-trash-2">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg></a>
-                <a class="update" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg></a>
-            </div>
-        </div>
-        <div class="user">
-            <div class="user-img"><img
-                    src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-4.svg"
-                    alt="Kalpana Chawala" /> </div>
-            <div class="user-data">
-                <h2>Josh </h2><a href="#">(josh@example.com)</a>
-                <div class="user-designation">Astronaut</div>
-            </div>
-            <div class="user-controls">
-                <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg></a>
-                <a class="delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-trash-2">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg></a>
-                <a class="update" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg></a>
             </div>
         </div>
-        <div class="user">
-            <div class="user-img"><img
-                    src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-3.svg"
-                    alt="Narendra Modi" /> </div>
-            <div class="user-data">
-                <h2>example </h2><a href="#">(person@example.com)</a>
-                <div class="user-designation">Prrime</div>
-            </div>
-            <div class="user-controls">
-                <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg></a>
-                <a class="delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-trash-2">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg></a>
-                <a class="update" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg></a>
-            </div>
         </div>
-        <div class="user">
-            <div class="user-img"><img
-                    src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-1.svg"
-                    alt="Mark Jukerburg" /> </div>
-            <div class="user-data">
-                <h2>Mark cross</h2><a href="#">(mark@example.com)</a>
-                <div class="user-designation">Facebook CEO</div>
-            </div>
-            <div class="user-controls">
-                <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg></a>
-                <a class="delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-trash-2">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg></a>
-                <a class="update" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg></a>
-            </div>
-        </div>
-        <div class="user">
-            <div class="user-img"><img
-                    src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-2.svg"
-                    alt="Mukesh Ambani" /> </div>
-            <div class="user-data">
-                <h2>Roll tide</h2><a href="#">(roll@example.com)</a>
-                <div class="user-designation">coach</div>
-            </div>
-            <div class="user-controls">
-                <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg></a>
-                <a class="delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-trash-2">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg></a>
-                <a class="update" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg></a>
-            </div>
-        </div>
-        <div class="user">
-            <div class="user-img"><img
-                    src="http://css3transition.com/demo/toggle-side-menu/stylesheet/images/person-3.svg"
-                    alt="K srivan" /> </div>
-            <div class="user-data">
-                <h2>asdfasdf</h2><a href="#">(srivansadfas@example.com)</a>
-                <div class="user-designation"> President</div>
-            </div>
-            <div class="user-controls">
-                <a class="add" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg></a>
-                <a class="delete" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-trash-2">
-                        <polyline points="3 6 5 6 21 6"></polyline>
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                        <line x1="10" y1="11" x2="10" y2="17"></line>
-                        <line x1="14" y1="11" x2="14" y2="17"></line>
-                    </svg></a>
-                <a class="update" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg></a>
-            </div>
-        </div>
-
-    </div>
-    </div>
-
-
-
-</body>
-
-</html>
+    </section>

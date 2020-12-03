@@ -15,8 +15,6 @@ passport.use(
       scope: ['r_emailaddress', 'r_liteprofile']
     },
     function (token, tokenSecret, profile, done) {
-      console.log(profile);
-      console.log({ token });
       return done(null, profile);
       /*
       process.nextTick(function () {
