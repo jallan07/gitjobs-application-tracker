@@ -12,9 +12,11 @@ const isLoggedIn = (req, res, next) => {
 // TODO Add includes companies syntax
 
 module.exports = (app) => {
+  //* ==========================
+  //* GET routes
+  //* ==========================
   //* PASSED TESTING IN POSTMAN
   // get all jobs
-
   app.get('/jobboard', isLoggedIn, (req, res) => {
     db.Applications.findAll({ include: db.Companies }).then((data) => {
       const hbsObject = {
@@ -52,6 +54,9 @@ module.exports = (app) => {
     });
   });
 
+  //* ==========================
+  //* POST ROUTES
+  //* ==========================
   //* PASSED TESTING IN POSTMAN
   // create a new job
   app.post('/api/applications', (req, res) => {
@@ -83,16 +88,22 @@ module.exports = (app) => {
     }).then((job) => res.redirect('/jobboard'));
   });
 
-  //! TEST PENDING -- REQUIRES FRONTEND LOGIC
-  // update job
-  app.put('/api/applications', (req, res) => {
-    db.Applications.update(req.body, {
-      where: {
-        id: req.body.id
-      }
-    }).then((job) => res.json(job));
-  });
+  //* ==========================
+  //* Put Routes
+  //* ==========================
+  // //! TEST PENDING -- REQUIRES FRONTEND LOGIC
+  // // update job
+  // app.put('/api/applications', (req, res) => {
+  //   db.Applications.update(req.body, {
+  //     where: {
+  //       id: req.body.id
+  //     }
+  //   }).then((job) => res.json(job));
+  // });
 
+  //* ==========================
+  //* Delete Routes
+  //* ==========================
   //* PASSED TESTING IN POSTMAN
   // delete job
   app.delete('/api/applications/:id', (req, res) => {
