@@ -69,13 +69,4 @@ module.exports = (app) => {
       title: 'User Profile | GitJobs'
     });
   });
-
-  // TODO Build a /job-boards page that displays all job applications and their status
-  app.get('/jobboard', isLoggedIn, (req, res) => {
-    res.render('applications', {
-      user: req.user,
-      style: 'applications.css',
-      title: 'Application Tracker & Job Board | GitJobs'
-    });
-  });
 };

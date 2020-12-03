@@ -1,31 +1,60 @@
 // This file is used to define all routes related to reading, writing, updating, and deleting applications from the application tracker feature of the app
 const db = require('../models');
+const passport = require('passport');
+const { Op } = require('sequelize');
+
+// Validate user is logged in
+const isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) return next();
+  res.redirect('/');
+};
 
 // TODO Add includes companies syntax
 
 module.exports = (app) => {
   //* PASSED TESTING IN POSTMAN
   // get all jobs
-  app.get('/api/applications', (req, res) => {
-    db.Applications.findAll({ include: db.Companies }).then((jobs) =>
-      res.json(jobs)
-    );
+
+  app.get('/jobboard', isLoggedIn, (req, res) => {
+    db.Applications.findAll({ include: db.Companies }).then((data) => {
+      const hbsObject = {
+        applications: data,
+        user: req.user,
+        style: 'applications.css',
+        title: 'Application Tracker & Job Board | GitJobs'
+      };
+      console.log(data);
+      res.render('applications', hbsObject);
+    });
   });
 
   //* PASSED TESTING IN POSTMAN
-  // get all jobs of a specific application status
-  app.get('/api/applications/:status', (req, res) => {
+  // Search for all jobs by name, company, status, or next step
+  app.get('/api/applications/search', isLoggedIn, (req, res) => {
+    const { term } = req.query;
     db.Applications.findAll({
       where: {
-        jobStatus: req.params.status
+        [Op.or]: [
+          { jobName: { [Op.like]: '%' + term + '%' } },
+          { jobCompany: { [Op.like]: '%' + term + '%' } },
+          { jobStatus: { [Op.like]: '%' + term + '%' } },
+          { jobNextStep: { [Op.like]: '%' + term + '%' } }
+        ]
       }
-    }).then((jobs) => res.json(jobs));
+    }).then((data) => {
+      const hbsObject = {
+        applications: data,
+        user: req.user,
+        style: 'applications.css',
+        title: 'Application Tracker & Job Board | GitJobs'
+      };
+      res.render('applications', hbsObject);
+    });
   });
 
   //* PASSED TESTING IN POSTMAN
   // create a new job
   app.post('/api/applications', (req, res) => {
-    console.log(req.body);
     // destructure the object variables
     const {
       jobName,
@@ -51,7 +80,7 @@ module.exports = (app) => {
       jobNextStep,
       jobCompany,
       applied
-    }).then((job) => res.json(job));
+    }).then((job) => res.redirect('/jobboard'));
   });
 
   //! TEST PENDING -- REQUIRES FRONTEND LOGIC
