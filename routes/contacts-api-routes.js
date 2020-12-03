@@ -1,11 +1,16 @@
 //! This file is used to define all routes related to reading, writing, updating,
 //! and deleting contacts from the CRM feature of the app
-
 //* ===================================================
 //* Dependencies
 //* ===================================================
 const db = require('../models');
+const passport = require('passport');
 
+// Validate user is logged in
+const isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) return next();
+  res.redirect('/');
+};
 //* ===================================================
 //* Routes
 //* ===================================================
@@ -16,7 +21,7 @@ module.exports = (app) => {
   //* ==========================
   // Get all contacts in rolodex
   //! Passed Postman Testing
-  app.get('/rolodex', (req, res) => {
+  app.get('/rolodex', isLoggedIn, (req, res) => {
     db.Rolodex.findAll({}).then((data) => {
       const hbsObject = {
         contacts: data,
@@ -28,7 +33,7 @@ module.exports = (app) => {
       res.render('rolodex', hbsObject);
     });
   });
-
+  // TODO Add front-end search
   // Get all contacts in rolodex by company
   app.get('/api/rolodex/:contactsCompany', (req, res) => {
     db.Rolodex.findOne({
@@ -39,6 +44,8 @@ module.exports = (app) => {
   });
 
   // Get all contacts in rolodex by relationship
+  // TODO Add front-end search
+
   //! Passed Postman Testing
   // TODO: Validation?
   app.get('/api/rolodex/:relationship', (req, res) => {
@@ -79,17 +86,31 @@ module.exports = (app) => {
       contactsLinkedin,
       contactsGithub,
       contactsNotes
-    }).then((contact) => res.json(contact));
+    }).then((contact) => res.redirect('/rolodex'));
   });
   //* ==========================
   //* Put Routes
   //* ==========================
   app.put('/api/rolodex/:id', (req, res) => {
-    db.Rolodex.update(req.body, {
-      where: {
-        id: req.body.id
+    db.Rolodex.update(
+      {
+        contactsName,
+        contactsRelationship,
+        contactsCompany,
+        contactsTitle,
+        contactsCity,
+        contactsPhone,
+        contactsEmail,
+        contactsLinkedin,
+        contactsGithub,
+        contactsNotes
+      },
+      {
+        where: {
+          id: req.params.id
+        }
       }
-    }).then((contact) => res.json(contact));
+    ).then((contact) => res.json(contact));
   });
 
   //* ==========================
@@ -100,6 +121,6 @@ module.exports = (app) => {
       where: {
         id: req.params.id
       }
-    }).then((contact) => res.json(contact));
+    }).then((contact) => res.status(200).end());
   });
 };
