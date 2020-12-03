@@ -31,7 +31,7 @@ module.exports = (app) => {
   app.get(
     '/auth/linkedin/callback',
     passport.authenticate('linkedin', {
-      successRedirect: '/profile',
+      successRedirect: '/landing',
       failureRedirect: '/login'
     })
   );
@@ -62,10 +62,10 @@ module.exports = (app) => {
 
   // get the profile for logged in users
   // TODO Currently index.handlebars serves as profile page - swap this for job board?
-  app.get('/profile', isLoggedIn, (req, res) => {
-    res.render('profile', {
+  app.get('/landing', isLoggedIn, (req, res) => {
+    res.render('landing', {
       user: req.user,
-      style: 'profile.css',
+      style: 'landing.css',
       title: 'User Profile | GitJobs'
     });
   });
@@ -86,4 +86,3 @@ module.exports = (app) => {
   //     });
   //   });
 };
-
