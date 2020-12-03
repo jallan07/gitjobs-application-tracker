@@ -18,7 +18,7 @@ const db = require('./models');
 // client.messages
 //   .create({
 //     body: 'Hello from GitJobs! Twilio integration FTW!',
-//     to: '+14102713079',
+//     to: '+18042002897',
 //     from: '+19382018822'
 //   })
 //   .then((message) => console.log(message.sid));
