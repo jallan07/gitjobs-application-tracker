@@ -11,10 +11,4 @@ $(document).ready(() => {
       console.log(data);
     });
   });
-
-  // const getContacts = () => {
-  //   $.get('/api/rolodex');
-  // };
-
-  // getContacts();
 });

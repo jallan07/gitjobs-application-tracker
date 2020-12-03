@@ -16,10 +16,16 @@ module.exports = (app) => {
   //* ==========================
   // Get all contacts in rolodex
   //! Passed Postman Testing
-  app.get('/api/rolodex', (req, res) => {
-    db.Rolodex.findAll({}).then((contacts) => {
-      console.log(contacts);
-      res.render('rolodex', contacts);
+  app.get('/rolodex', (req, res) => {
+    db.Rolodex.findAll({}).then((data) => {
+      const hbsObject = {
+        contacts: data,
+        user: req.user,
+        style: 'rolodex.css',
+        title: 'Rolodex & CRM | GitJobs'
+      };
+      console.log(data);
+      res.render('rolodex', hbsObject);
     });
   });
 
