@@ -5,6 +5,14 @@
 //* Dependencies
 //* ===================================================
 const db = require('../models');
+const passport = require('passport');
+const { Op } = require('sequelize');
+
+// Validate user is logged in
+const isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) return next();
+  res.redirect('/');
+};
 
 //* ===================================================
 //* Routes
@@ -14,6 +22,32 @@ module.exports = (app) => {
   //* GET routes
   // TODO Add includes for contacts and applications - populate in two divs?
   //* ==========================
+  app.get('/api/companies/search', isLoggedIn, (req, res) => {
+    const { term } = req.query;
+    db.Companies.findAll({
+      include: [db.Rolodex, db.Applications],
+      where: {
+        [Op.or]: [
+          { companyName: { [Op.like]: '%' + term + '%' } },
+          { companyIndustry: { [Op.like]: '%' + term + '%' } },
+          { companyCity: { [Op.like]: '%' + term + '%' } },
+          { companyDescription: { [Op.like]: '%' + term + '%' } }
+        ]
+      }
+    }).then((data) => {
+      const hbsObject = {
+        companies: data,
+        user: req.user,
+        style: 'landing.css',
+        title: 'Companies | GitJobs'
+      };
+      // res.json(data);
+      console.log(hbsObject);
+      res.render('landing', hbsObject);
+      console.log(hbsObject);
+    });
+  });
+
   // Get all companies
   app.get('/api/companies', (req, res) => {
     db.Companies.findAll({
