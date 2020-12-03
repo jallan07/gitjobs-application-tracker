@@ -5,6 +5,7 @@
 //* ===================================================
 const db = require('../models');
 const passport = require('passport');
+const { Op } = require('sequelize');
 
 // Validate user is logged in
 const isLoggedIn = (req, res, next) => {
@@ -17,7 +18,7 @@ const isLoggedIn = (req, res, next) => {
 module.exports = (app) => {
   //* ==========================
   //* GET routes
-  // TODO Add includes companies - can we specify what fields/columns?
+  // TODO Add includes companies, add data to the full profile card
   //* ==========================
   // Get all contacts in rolodex
   //! Passed Postman Testing
@@ -33,27 +34,29 @@ module.exports = (app) => {
       res.render('rolodex', hbsObject);
     });
   });
+
   // TODO Add front-end search
   // Get all contacts in rolodex by company
-  app.get('/api/rolodex/:contactsCompany', (req, res) => {
-    db.Rolodex.findOne({
-      where: {
-        contactsCompany: req.body.contactsCompany
-      }
-    }).then((jobs) => res.json(jobs));
-  });
-
-  // Get all contacts in rolodex by relationship
-  // TODO Add front-end search
-
-  //! Passed Postman Testing
-  // TODO: Validation?
-  app.get('/api/rolodex/:relationship', (req, res) => {
+  app.get('/api/rolodex/search', isLoggedIn, (req, res) => {
+    const { term } = req.query;
     db.Rolodex.findAll({
       where: {
-        contactsRelationship: req.body.relationship
+        [Op.or]: [
+          { contactsName: { [Op.like]: '%' + term + '%' } },
+          { contactsCompany: { [Op.like]: '%' + term + '%' } },
+          { contactsCity: { [Op.like]: '%' + term + '%' } },
+          { contactsRelationship: { [Op.like]: '%' + term + '%' } }
+        ]
       }
-    }).then((contacts) => res.json(contacts));
+    }).then((data) => {
+      const hbsObject = {
+        contacts: data,
+        user: req.user,
+        style: 'rolodex.css',
+        title: 'Rolodex & CRM | GitJobs'
+      };
+      res.render('rolodex', hbsObject);
+    });
   });
 
   //* ==========================
@@ -91,27 +94,27 @@ module.exports = (app) => {
   //* ==========================
   //* Put Routes
   //* ==========================
-  app.put('/api/rolodex/:id', (req, res) => {
-    db.Rolodex.update(
-      {
-        contactsName,
-        contactsRelationship,
-        contactsCompany,
-        contactsTitle,
-        contactsCity,
-        contactsPhone,
-        contactsEmail,
-        contactsLinkedin,
-        contactsGithub,
-        contactsNotes
-      },
-      {
-        where: {
-          id: req.params.id
-        }
-      }
-    ).then((contact) => res.json(contact));
-  });
+  // app.put('/api/rolodex/:id', (req, res) => {
+  //   db.Rolodex.update(
+  //     {
+  //       contactsName,
+  //       contactsRelationship,
+  //       contactsCompany,
+  //       contactsTitle,
+  //       contactsCity,
+  //       contactsPhone,
+  //       contactsEmail,
+  //       contactsLinkedin,
+  //       contactsGithub,
+  //       contactsNotes
+  //     },
+  //     {
+  //       where: {
+  //         id: req.params.id
+  //       }
+  //     }
+  //   ).then((contact) => res.json(contact));
+  // });
 
   //* ==========================
   //* Delete Routes
