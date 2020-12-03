@@ -1,9 +1,9 @@
     <section class="container mt-5 mb-1">
         {{!-- Search --}}
-        <div class="search-box mx-auto">
-            <input placeholder="Type to search rolodex..." id="search-users" class="search-users" type="text">
-            <button class="search-box-action">Search</button>
-        </div>
+        <form action="/api/rolodex/search" class="search-box mx-auto">
+            <input placeholder="Type to search rolodex..." id="search-users" class="search-users" type="search" name="term">
+            <input type="submit" value="Search" class="search-box-action"></input>
+        </form>
         <div class="row">
             <div class="col-md-3 my-2 mx-auto">
                 <a href="/landing"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"

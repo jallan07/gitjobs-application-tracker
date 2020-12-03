@@ -78,11 +78,4 @@ module.exports = (app) => {
       title: 'Application Tracker & Job Board | GitJobs'
     });
   });
-
-  //   // get the rolodex for the logged in user
-  //   app.get('/rolodex', isLoggedIn, (req, res) => {
-  //     res.render('rolodex', {
-
-  //     });
-  //   });
 };
