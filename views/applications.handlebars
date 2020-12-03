@@ -1,0 +1,188 @@
+<section class="container mt-3 mb-1">
+    <div class="row">
+        <div class="col-md-3 my-2 mx-auto">
+            <a href="/landing"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-plus-circle">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg> &nbsp;profile</button></a>
+        </div>
+        <div class="col-md-3 my-2 mx-auto">
+            <a href="/jobboard"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-edit">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg> &nbsp;applications</button></a>
+        </div>
+        <div class="col-md-3 my-2 mx-auto">
+            <a href="/rolodex"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-edit">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg> &nbsp;rolodex</button></a>
+        </div>
+        <div class="col-md-3 my-2 mx-auto">
+            <a href="/logout"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-plus-circle">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg> &nbsp;logout</button></a>
+        </div>
+    </div>
+    {{!-- Search --}}
+    <div class="search-box mx-auto my-3">
+        <input placeholder="Type to search rolodex..." id="search-users" class="search-users" type="text">
+        <button class="search-box-action">Search</button>
+    </div>
+    <div class="row">
+        <div class="col-md-4 my-2 mx-auto">
+            <button class="btn btn-submit py-3 px-5 mx-auto" data-toggle="modal" data-target="#exampleModalCenter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="feather feather-plus-circle">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg> &nbsp;add an application</button>
+        </div>
+    </div>
+</section>
+    {{!-- Cards --}}
+    <section class="container">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-4">
+                {{!-- #each application --}}
+                <div class="col mx-auto my-3">
+                    <div class="card user">
+                    <div class="user-data">
+                        <h2 class="mb-2">job name{{dataValues.jobName}}</h2>
+                        <a href="tel:{{dataValues.contactsPhone}}">company{{dataValues.jobCompany}}</a>
+                        <a href="mailto:{{dataValues.jobHiringMgrEmail}}">manager email{{dataValues.jobHiringMgrEmail}}</a>
+                        <div class="user-designation">job status{{dataValues.jobStatus}}</div>
+                    </div>
+                    <div class="user-controls">
+
+                        <a class="add addContact" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-plus-circle">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg></a>
+
+                        <a class="delete deleteContact"  href="#" data-id="{{dataValues.id}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-trash-2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            <line x1="10" y1="11" x2="10" y2="17"></line>
+                            <line x1="14" y1="11" x2="14" y2="17"></line>
+                        </svg></a>
+
+                        <a class="update updateContact" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-edit">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg></a>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                {{!-- /each --}}
+            </div>
+        </div>
+    </section>
+    <section id="add" class="container my-5">
+        {{!-- <!-- Modal --> --}}
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title mx-5 text-center" id="exampleModalLongTitle">Save a new application to your Job Board using the form below!</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{!-- Form --}}
+                <div class="form-wrap">
+                <form action="/api/rolodex" id="addContactForm" method="POST">
+                    <div class="row mx-auto">
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsName">Name of the contact</label> --}}
+                            <input type="text" name="contactsName" id="contactsName" class="input-box" placeholder="Name of the contact"
+                                maxlength="100" value={{contactsName}}>
+                        </div>
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsRelationship">Relationship</label> --}}
+                            <input type="text" name="contactsRelationship" id="contactsRelationship" class="input-box" placeholder="Relationship with contact"
+                            maxlength="100" value={{contactsRelationship}}>
+                        </div>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsCompany">Company</label> --}}
+                        <input type="text" name="contactsCompany" id="contactsCompany" class="input-box" placeholder="Company"
+                        maxlength="100" value={{contactsCompany}}>
+                        </div>
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsCity">City</label> --}}
+                        <input type="text" name="contactsCity" id="contactsCity" class="input-box" placeholder="City"
+                        maxlength="100" value={{contactsCity}}>
+                        </div>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsTitle">Title</label> --}}
+                        <input type="text" name="contactsTitle" id="contactsTitle" class="input-box" placeholder="Title"
+                        maxlength="100" value={{contactsTitle}}>
+                        </div>
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsPhone">Phone</label> --}}
+                        <input type="text" name="contactsPhone" id="contactsPhone" class="input-box" placeholder="Phone"
+                        maxlength="100" value={{contactsPhone}}>
+                        </div>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsEmail">Email</label> --}}
+                        <input type="text" name="contactsEmail" id="contactsEmail" class="input-box" placeholder="Email"
+                        maxlength="100" value={{contactsEmail}}>
+                        </div>
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsGithub">GitHub</label> --}}
+                        <input type="text" name="contactsGithub" id="contactsGithub" class="input-box" placeholder="Github"
+                        maxlength="100" value={{contactsGithub}}>
+                        </div>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsLinkedin">LinkedIn</label> --}}
+                        <input type="text" name="contactsLinkedin" id="contactsLinkedin" class="input-box" placeholder="Linkedin"
+                        maxlength="100" value={{contactsLinkedin}}>
+                        </div>
+                        <div class="col-md-6 input-group my-2">
+                        {{!-- <label for="contactsNotes">Notes</label> --}}
+                        <input type="text" name="contactsNotes" id="contactsNotes" class="input-box" placeholder="Notes"
+                        maxlength="100" value={{contactsNotes}}>
+                        </div>
+                    </div>
+                    {{!-- TODO MC - I moved the submit button back into the form for the sake opf, but I think you can  --}}
+                    <div class="modal-footer">
+                        {{!-- <button type="button" class="btn btn-primary">Save new contact</button> --}}
+                        <input type="submit" id="addContactBtn" value="Save Contact" class="btn btn-submit btn-reverse my-5">
+                        {{!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Done!</button> --}}
+                    </div>
+                    {{!-- <input type="submit" value="Save Contact" class="btn btn-submit btn-reverse my-5"> --}}
+                </form>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>

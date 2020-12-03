@@ -23,6 +23,29 @@
                         </svg> &nbsp;applications</button></a>
             </div>
             <div class="col-md-3 my-2 mx-auto">
+                <a href="/rolodex"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-edit">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg> &nbsp;rolodex</button></a>
+            </div>
+            <div class="col-md-3 my-2 mx-auto">
+                <a href="/logout"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-plus-circle">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                        </svg> &nbsp;logout</button></a>
+            </div>
+        </div>
+        {{!-- Search --}}
+        <div class="search-box mx-auto my-3">
+            <input placeholder="Type to search rolodex..." id="search-users" class="search-users" type="text">
+            <button class="search-box-action">Search</button>
+        </div>
+        <div class="row">
+            <div class="col-md-3 my-2 mx-auto">
                 <button class="btn btn-submit py-3 px-5 mx-auto" data-toggle="modal" data-target="#exampleModalCenter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                             viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="feather feather-plus-circle">
@@ -30,14 +53,6 @@
                             <line x1="12" y1="8" x2="12" y2="16"></line>
                             <line x1="8" y1="12" x2="16" y2="12"></line>
                         </svg> &nbsp;create a contact</button>
-            </div>
-            <div class="col-md-3 my-2 mx-auto">
-                <a href="/logout"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="feather feather-edit">
-                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                        </svg> &nbsp;logout</button></a>
             </div>
         </div>
     </section>
