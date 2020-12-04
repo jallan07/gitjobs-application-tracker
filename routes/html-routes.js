@@ -48,6 +48,7 @@ module.exports = (app) => {
   // index route loads login page
   app.get('/', (req, res) => {
     res.render('login', {
+      layout: 'login.handlebars',
       style: 'login.css'
     });
   });
@@ -66,7 +67,7 @@ module.exports = (app) => {
       user: req.user,
       photo: req.user.photos[2].value,
       email: req.user.emails[0].value,
-      style: 'landing.css',
+      style: 'rolodex.css',
       title: 'User Profile | GitJobs'
     });
   });
