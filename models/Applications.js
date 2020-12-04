@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       jobLink: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
         validate: {
           len: [1]
         }
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       jobHiringMgrName: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
         validate: {
           len: [1]
         }
@@ -41,14 +41,14 @@ module.exports = (sequelize, DataTypes) => {
       },
       jobStatus: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
         validate: {
           len: [1]
         }
       },
       jobNextStep: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        // allowNull: false,
         validate: {
           len: [1]
         }

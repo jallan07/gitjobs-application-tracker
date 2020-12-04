@@ -9,14 +9,11 @@ const isLoggedIn = (req, res, next) => {
   res.redirect('/');
 };
 
-// TODO Add includes companies syntax
-
 module.exports = (app) => {
   //* ==========================
   //* GET routes
   //* ==========================
-  //* PASSED TESTING IN POSTMAN
-  // get all jobs
+  // get all jobs on jobboard page load
   app.get('/jobboard', isLoggedIn, (req, res) => {
     db.Applications.findAll({ include: db.Companies }).then((data) => {
       const hbsObject = {
@@ -30,34 +27,33 @@ module.exports = (app) => {
     });
   });
 
-  //* PASSED TESTING IN POSTMAN
+  // TODO Debug search - Currently breaks CSS relative pathing
   // Search for all jobs by name, company, status, or next step
-  app.get('/api/applications/search', isLoggedIn, (req, res) => {
-    const { term } = req.query;
-    db.Applications.findAll({
-      where: {
-        [Op.or]: [
-          { jobName: { [Op.like]: '%' + term + '%' } },
-          { jobCompany: { [Op.like]: '%' + term + '%' } },
-          { jobStatus: { [Op.like]: '%' + term + '%' } },
-          { jobNextStep: { [Op.like]: '%' + term + '%' } }
-        ]
-      }
-    }).then((data) => {
-      const hbsObject = {
-        applications: data,
-        user: req.user,
-        style: 'applications.css',
-        title: 'Application Tracker & Job Board | GitJobs'
-      };
-      res.render('applications', hbsObject);
-    });
-  });
+  // app.get('/api/applications/search', isLoggedIn, (req, res) => {
+  //   const { term } = req.query;
+  //   db.Applications.findAll({
+  //     where: {
+  //       [Op.or]: [
+  //         { jobName: { [Op.like]: '%' + term + '%' } },
+  //         { jobCompany: { [Op.like]: '%' + term + '%' } },
+  //         { jobStatus: { [Op.like]: '%' + term + '%' } },
+  //         { jobNextStep: { [Op.like]: '%' + term + '%' } }
+  //       ]
+  //     }
+  //   }).then((data) => {
+  //     const hbsObject = {
+  //       applications: data,
+  //       user: req.user,
+  //       style: 'applications.css',
+  //       title: 'Application Tracker & Job Board | GitJobs'
+  //     };
+  //     res.render('applications', hbsObject);
+  //   });
+  // });
 
   //* ==========================
   //* POST ROUTES
   //* ==========================
-  //* PASSED TESTING IN POSTMAN
   // create a new job
   app.post('/api/applications', (req, res) => {
     // destructure the object variables
@@ -91,8 +87,8 @@ module.exports = (app) => {
   //* ==========================
   //* Put Routes
   //* ==========================
-  // //! TEST PENDING -- REQUIRES FRONTEND LOGIC
-  // // update job
+  // TODO Update application PUT route and attach to front-end
+  // update job
   // app.put('/api/applications', (req, res) => {
   //   db.Applications.update(req.body, {
   //     where: {
