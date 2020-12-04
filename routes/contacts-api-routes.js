@@ -37,27 +37,27 @@ module.exports = (app) => {
 
   // TODO Add front-end search
   // Get all contacts in rolodex by company
-  app.get('/api/rolodex/search', isLoggedIn, (req, res) => {
-    const { term } = req.query;
-    db.Rolodex.findAll({
-      where: {
-        [Op.or]: [
-          { contactsName: { [Op.like]: '%' + term + '%' } },
-          { contactsCompany: { [Op.like]: '%' + term + '%' } },
-          { contactsCity: { [Op.like]: '%' + term + '%' } },
-          { contactsRelationship: { [Op.like]: '%' + term + '%' } }
-        ]
-      }
-    }).then((data) => {
-      const hbsObject = {
-        contacts: data,
-        user: req.user,
-        style: 'https://localhost:3000/public/css/rolodex.css',
-        title: 'Rolodex & CRM | GitJobs'
-      };
-      res.render('rolodex', hbsObject);
-    });
-  });
+  // app.get('/api/rolodex/search', isLoggedIn, (req, res) => {
+  //   const { term } = req.query;
+  //   db.Rolodex.findAll({
+  //     where: {
+  //       [Op.or]: [
+  //         { contactsName: { [Op.like]: '%' + term + '%' } },
+  //         { contactsCompany: { [Op.like]: '%' + term + '%' } },
+  //         { contactsCity: { [Op.like]: '%' + term + '%' } },
+  //         { contactsRelationship: { [Op.like]: '%' + term + '%' } }
+  //       ]
+  //     }
+  //   }).then((data) => {
+  //     const hbsObject = {
+  //       contacts: data,
+  //       user: req.user,
+  //       style: 'rolodex.css',
+  //       title: 'Rolodex & CRM | GitJobs'
+  //     };
+  //     res.render('rolodex', hbsObject);
+  //   });
+  // });
 
   //* ==========================
   //* POST ROUTES
