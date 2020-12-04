@@ -26,12 +26,6 @@ $(document).ready(function () {
   //   console.log(searchTerm);
   // });
 
-  // $('#rolodexSearch').on('keyup', function () {
-  //   const value = $(this).val().toLowerCase();
-  //   $('#contactData').filter(function () {
-  //     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-  //   });
-  // });
   // $.ajax({
   //   url: '/api/rolodex/search',
   //   method: 'GET'
@@ -54,13 +48,13 @@ $(document).ready(function () {
     });
   });
 
-//   $(document).on('click', '.appSearch', function (e) {
-//     e.preventDefault();
-//     $.ajax({
-//       url: '/api/applications/search',
-//       method: 'GET'
-//     }).then(() => {
-//       res.status(200).end();
-//     });
-//   });
-// });
+  //   $(document).on('click', '.appSearch', function (e) {
+  //     e.preventDefault();
+  //     $.ajax({
+  //       url: '/api/applications/search',
+  //       method: 'GET'
+  //     }).then(() => {
+  //       res.status(200).end();
+  //     });
+  //   });
+});
