@@ -6,7 +6,6 @@ $(document).ready(function () {
   //* ==========================
   //* Rolodex
   //* ==========================
-
   $(document).on('click', '.deleteContact', function (e) {
     e.preventDefault();
     const id = $(this).data('id');
