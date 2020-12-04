@@ -1,5 +1,3 @@
--- -- TODO Create a list of seed contacts for the database to use as dummy data
-
 -- INSERT INTO Rolodex
 --  (contactsName, contactsRelationship, contactsTitle, contactsCompany, contactsCity, contactsPhone, contactsEmail, contactsLinkedin, contactsGithub, contactsNotes, createdAt, updatedAt) 
 -- VALUES

@@ -1,5 +1,3 @@
--- -- TODO Create a list of seed companies for the database to use as dummy data
-
 -- INSERT INTO Companies
 --  (companyName, companyEmployees, companyRevenue, companyWebsite, companySector, companyIndustry, companyCity, companyState, companyDescription, createdAt, updatedAt) 
 -- VALUES

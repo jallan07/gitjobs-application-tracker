@@ -1,5 +1,3 @@
--- -- TODO Create a list of seed applications for the database to use as dummy data
-
 -- INSERT INTO Applications
 --  (jobName, jobCompany, jobLink, jobSalary, jobHiringMgrName, jobHiringMgrTitle, jobHiringMgrEmail, jobStatus, jobNextStep, applied, createdAt, updatedAt) 
 -- VALUES
