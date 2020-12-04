@@ -63,8 +63,10 @@ module.exports = (app) => {
   // get the profile for logged in users
   // TODO Currently index.handlebars serves as profile page - swap this for job board?
   app.get('/landing', isLoggedIn, (req, res) => {
+    console.log(req.user);
     res.render('landing', {
       user: req.user,
+      photo: req.user.photos[2].value,
       style: 'landing.css',
       title: 'User Profile | GitJobs'
     });
