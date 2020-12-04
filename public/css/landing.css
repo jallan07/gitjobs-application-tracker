@@ -2,10 +2,36 @@ body {
   margin-top: 20px;
   color: #1a202c;
   text-align: left;
-  background-color: #5bb6ae;
+  /* background-color: #5bb6ae; */
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
 }
 .main-body {
   padding: 15px;
+}
+.btn-submit {
+  background-image: linear-gradient(
+    to right,
+    #5200ff,
+    #5c00ff,
+    #6500ff,
+    #6d00ff,
+    #7500ff,
+    #7a00fd,
+    #7e00fa,
+    #8200f8,
+    #8400f3,
+    #8700ee,
+    #8800ea,
+    #8a00e5
+  );
+  border-radius: 30px;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  box-sizing: border-box;
+  width: 100%;
 }
 .card {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
