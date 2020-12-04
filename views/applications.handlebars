@@ -1,44 +1,4 @@
 <section class="container">
-    <div class="row my-3">
-        <div class="col-md-3 my-2 mx-auto">
-            <a href="/landing"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="8" x2="12" y2="16"></line>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg> &nbsp;profile</button></a>
-        </div>
-        <div class="col-md-3 my-2 mx-auto">
-            <a href="/jobboard"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg> &nbsp;applications</button></a>
-        </div>
-        <div class="col-md-3 my-2 mx-auto">
-            <a href="/rolodex"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-edit">
-                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                    </svg> &nbsp;rolodex</button></a>
-        </div>
-        <div class="col-md-3 my-2 mx-auto">
-            <a href="/logout"><button class="btn btn-submit py-3 px-5 mx-auto"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="feather feather-plus-circle">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="8" y1="12" x2="16" y2="12"></line>
-                    </svg> &nbsp;logout</button></a>
-        </div>
-    </div>
-    {{!-- Search --}}
-        {{!-- <form class="search-box mx-auto">
-            <input placeholder="Type to search applications..." id="search-apps" class="search-users" type="search" name="term">
-            <input type="submit" value="Search" class="search-box-action"></input>
-        </form> --}}
         <div class="row">
             <div class="col-md-4 my-2 mx-auto">
                 <button class="btn btn-submit py-3 px-5 mx-auto" data-toggle="modal" data-target="#exampleModalCenter"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -54,9 +14,9 @@
     {{!-- Cards --}}
     <section class="container">
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-4">
+            <div class="row row-cols-1 row-cols-md-4" >
                 {{#each applications}}
-                <div class="col mx-auto my-3">
+                <div class="col mx-auto my-3" data-aos="flip-left" data-aos-duration="1000">
                     <div class="card user">
                     <div class="user-data">
                         <h2 class="mb-2">{{dataValues.jobName}}</h2>
