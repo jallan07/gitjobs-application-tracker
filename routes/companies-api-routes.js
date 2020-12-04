@@ -20,81 +20,73 @@ const isLoggedIn = (req, res, next) => {
 module.exports = (app) => {
   //* ==========================
   //* GET routes
-  // TODO Add includes for contacts and applications - populate in two divs?
   //* ==========================
-  app.get('/api/companies/search', isLoggedIn, (req, res) => {
-    const { term } = req.query;
-    db.Companies.findAll({
-      include: [db.Rolodex, db.Applications],
-      where: {
-        [Op.or]: [
-          { companyName: { [Op.like]: '%' + term + '%' } },
-          { companyIndustry: { [Op.like]: '%' + term + '%' } },
-          { companyCity: { [Op.like]: '%' + term + '%' } },
-          { companyDescription: { [Op.like]: '%' + term + '%' } }
-        ]
-      }
-    }).then((data) => {
-      const hbsObject = {
-        companies: data,
-        user: req.user,
-        style: 'landing.css',
-        title: 'Companies | GitJobs'
-      };
-      res.render('landing', hbsObject);
-    });
-  });
-
+  // TODO Debug search - Currently breaks CSS relative pathing
+  // Search and findAll companies by name, industry, city, or description
+  // This will also return any of your contacts at that company
+  // As well as any applications you've submitted there
+  // app.get('/api/companies/search', isLoggedIn, (req, res) => {
+  //   const { term } = req.query;
+  //   db.Companies.findAll({
+  //     include: [db.Rolodex, db.Applications],
+  //     where: {
+  //       [Op.or]: [
+  //         { companyName: { [Op.like]: '%' + term + '%' } },
+  //         { companyIndustry: { [Op.like]: '%' + term + '%' } },
+  //         { companyCity: { [Op.like]: '%' + term + '%' } },
+  //         { companyDescription: { [Op.like]: '%' + term + '%' } }
+  //       ]
+  //     }
+  //   }).then((data) => {
+  //     const hbsObject = {
+  //       companies: data,
+  //       user: req.user,
+  //       style: 'landing.css',
+  //       title: 'Companies | GitJobs'
+  //     };
+  //     res.render('landing', hbsObject);
+  //   });
+  // });
   // Get all companies
-  app.get('/api/companies', (req, res) => {
-    db.Companies.findAll({
-      include: [db.Rolodex, db.Applications]
-    }).then((companies) => res.json(companies));
-  });
-
-  // Get company by name
-  app.get('/api/companies/:companyName', (req, res) => {
-    db.Companies.findOne({
-      where: {
-        companyName: req.body.companyName
-      }
-    }).then((jobs) => res.json(jobs));
-  });
-
+  // app.get('/api/companies', (req, res) => {
+  //   db.Companies.findAll({
+  //     include: [db.Rolodex, db.Applications]
+  //   }).then((companies) => res.json(companies));
+  // });
   //* ==========================
   //* POST ROUTES
   //* ==========================
+  // TODO Update company POST route and attach to front-end
   // Add a company
-  app.post('/api/companies', (req, res) => {
-    console.log(req.body);
-    const {
-      companyName,
-      companyEmployees,
-      companyRevenue,
-      companyWebsite,
-      companyIndustry,
-      companySector,
-      companyCity,
-      companyState,
-      companyDescription
-    } = req.body;
-
-    db.Companies.create({
-      companyName,
-      companyEmployees,
-      companyRevenue,
-      companyWebsite,
-      companyIndustry,
-      companySector,
-      companyCity,
-      companyState,
-      companyDescription
-    }).then((company) => res.json(company));
-  });
-
+  // app.post('/api/companies', (req, res) => {
+  //   console.log(req.body);
+  //   const {
+  //     companyName,
+  //     companyEmployees,
+  //     companyRevenue,
+  //     companyWebsite,
+  //     companyIndustry,
+  //     companySector,
+  //     companyCity,
+  //     companyState,
+  //     companyDescription
+  //   } = req.body;
+  //   db.Companies.create({
+  //     companyName,
+  //     companyEmployees,
+  //     companyRevenue,
+  //     companyWebsite,
+  //     companyIndustry,
+  //     companySector,
+  //     companyCity,
+  //     companyState,
+  //     companyDescription
+  //   }).then((company) => res.json(company));
+  // });
   //* ==========================
   //* Put Routes
   //* ==========================
+  // TODO Update company PUT route and attach to front-end
   // app.put('/api/rolodex/:id', (req, res) => {
   //   db.Companies.update(req.body, {
   //     where: {
@@ -102,16 +94,15 @@ module.exports = (app) => {
   //     }
   //   }).then((contact) => res.json(contact));
   // });
-
   //* ==========================
   //* Delete Routes
   //* ==========================
-  // TODO: Do we need this?
-  app.delete('/api/companies/:id', (req, res) => {
-    db.Companies.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then((contact) => res.json(contact));
-  });
+  // TODO Update company DELETE route and attach to front-end
+  //   app.delete('/api/companies/:id', (req, res) => {
+  //     db.Companies.destroy({
+  //       where: {
+  //         id: req.params.id
+  //       }
+  //     }).then((contact) => res.json(contact));
+  //   });
 };

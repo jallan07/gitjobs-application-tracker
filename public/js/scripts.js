@@ -1,6 +1,6 @@
 $(document).ready(function () {
   //* ==========================
-  //* Event listeners
+  //* Profile
   //* ==========================
 
   //* ==========================
@@ -18,22 +18,6 @@ $(document).ready(function () {
     });
   });
 
-  // $(document).on('click', '#contactSearchForm', function (e) {
-  //   e.preventDefault();
-  //   const searchTerm = $('#rolodexSearch').val();
-  //   searchTerm.filter(function() {
-  //   })
-  //   console.log(searchTerm);
-  // });
-
-  // $.ajax({
-  //   url: '/api/rolodex/search',
-  //   method: 'GET'
-  // }).then(() => {
-  //   console.log('success!');
-  // });
-  // });
-
   //* ==========================
   //* Job Board
   //* ==========================
@@ -47,14 +31,4 @@ $(document).ready(function () {
       window.location.reload();
     });
   });
-
-  //   $(document).on('click', '.appSearch', function (e) {
-  //     e.preventDefault();
-  //     $.ajax({
-  //       url: '/api/applications/search',
-  //       method: 'GET'
-  //     }).then(() => {
-  //       res.status(200).end();
-  //     });
-  //   });
 });
