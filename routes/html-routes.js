@@ -64,6 +64,8 @@ module.exports = (app) => {
   app.get('/landing', isLoggedIn, (req, res) => {
     res.render('landing', {
       user: req.user,
+      photo: req.user.photos[2].value,
+      email: req.user.emails[0].value,
       style: 'landing.css',
       title: 'User Profile | GitJobs'
     });
