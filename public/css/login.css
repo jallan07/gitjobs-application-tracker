@@ -1,6 +1,6 @@
 .login {
   position: absolute;
-  left: 43%;
+  left: 40%;
   padding-bottom: 40%;
   margin: -150px 0 0 -150px;
   width: 400px;
@@ -54,7 +54,7 @@ h4 {
 .login {
   position: relative;
   padding: 30px;
-  margin-top: 280px;
+  margin-top: 230px;
   width: 600px;
   height: 270px;
   justify-content: center;
