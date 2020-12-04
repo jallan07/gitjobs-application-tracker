@@ -73,71 +73,57 @@
                 <form action="/api/rolodex" id="addContactForm" method="POST">
                     <div class="row mx-auto">
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsName">Name of the contact</label> --}}
                             <input type="text" name="contactsName" id="contactsName" class="input-box" placeholder="Name of the contact"
                                 maxlength="100" value={{contactsName}}>
                         </div>
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsRelationship">Relationship</label> --}}
                             <input type="text" name="contactsRelationship" id="contactsRelationship" class="input-box" placeholder="Relationship with contact"
                             maxlength="100" value={{contactsRelationship}}>
                         </div>
                     </div>
                     <div class="row mx-auto">
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsCompany">Company</label> --}}
                         <input type="text" name="contactsCompany" id="contactsCompany" class="input-box" placeholder="Company"
                         maxlength="100" value={{contactsCompany}}>
                         </div>
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsCity">City</label> --}}
                         <input type="text" name="contactsCity" id="contactsCity" class="input-box" placeholder="City"
                         maxlength="100" value={{contactsCity}}>
                         </div>
                     </div>
                     <div class="row mx-auto">
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsTitle">Title</label> --}}
                         <input type="text" name="contactsTitle" id="contactsTitle" class="input-box" placeholder="Title"
                         maxlength="100" value={{contactsTitle}}>
                         </div>
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsPhone">Phone</label> --}}
                         <input type="text" name="contactsPhone" id="contactsPhone" class="input-box" placeholder="Phone"
                         maxlength="100" value={{contactsPhone}}>
                         </div>
                     </div>
                     <div class="row mx-auto">
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsEmail">Email</label> --}}
                         <input type="text" name="contactsEmail" id="contactsEmail" class="input-box" placeholder="Email"
                         maxlength="100" value={{contactsEmail}}>
                         </div>
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsGithub">GitHub</label> --}}
                         <input type="text" name="contactsGithub" id="contactsGithub" class="input-box" placeholder="Github"
                         maxlength="100" value={{contactsGithub}}>
                         </div>
                     </div>
                     <div class="row mx-auto">
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsLinkedin">LinkedIn</label> --}}
                         <input type="text" name="contactsLinkedin" id="contactsLinkedin" class="input-box" placeholder="Linkedin"
                         maxlength="100" value={{contactsLinkedin}}>
                         </div>
                         <div class="col-md-6 input-group my-2">
-                        {{!-- <label for="contactsNotes">Notes</label> --}}
                         <input type="text" name="contactsNotes" id="contactsNotes" class="input-box" placeholder="Notes"
                         maxlength="100" value={{contactsNotes}}>
                         </div>
                     </div>
-                    {{!-- TODO MC - I moved the submit button back into the form for the sake opf, but I think you can  --}}
                     <div class="modal-footer">
-                        {{!-- <button type="button" class="btn btn-primary">Save new contact</button> --}}
                         <input type="submit" id="addContactBtn" value="Save Contact" class="btn btn-submit btn-reverse my-5">
-                        {{!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Done!</button> --}}
                     </div>
-                    {{!-- <input type="submit" value="Save Contact" class="btn btn-submit btn-reverse my-5"> --}}
                 </form>
             </div>
             </div>
