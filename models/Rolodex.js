@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       contactsRelationship: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
         validate: {
           len: [1]
         }
@@ -43,7 +43,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       contactsNotes: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        // allowNull: false,
         validate: {
           len: [1]
         }

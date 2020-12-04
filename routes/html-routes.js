@@ -45,8 +45,7 @@ module.exports = (app) => {
   //* ===================================================
   //* HTML Routes
   //* ===================================================
-  // index route loads main page
-  // TODO Currently index.handlebars (CV page) - do we want this to be the job board?
+  // index route loads login page
   app.get('/', (req, res) => {
     res.render('login', {
       style: 'login.css'
@@ -60,13 +59,13 @@ module.exports = (app) => {
     });
   });
 
-  // get the profile for logged in users
+  // Successful login gets the profile for logged in users and renders landing
   // TODO Currently index.handlebars serves as profile page - swap this for job board?
   app.get('/landing', isLoggedIn, (req, res) => {
-    console.log(req.user);
     res.render('landing', {
       user: req.user,
       photo: req.user.photos[2].value,
+      email: req.user.emails[0].value,
       style: 'landing.css',
       title: 'User Profile | GitJobs'
     });

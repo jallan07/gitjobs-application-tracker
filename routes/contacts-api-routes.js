@@ -20,7 +20,7 @@ module.exports = (app) => {
   //* GET routes
   // TODO Add includes companies, add data to the full profile card
   //* ==========================
-  // Get all contacts in rolodex
+  // Get all contacts in rolodex on rolodex page load
   //! Passed Postman Testing
   app.get('/rolodex', isLoggedIn, (req, res) => {
     db.Rolodex.findAll({}).then((data) => {
@@ -35,9 +35,9 @@ module.exports = (app) => {
     });
   });
 
-  // TODO Add front-end search
-  // Get all contacts in rolodex by company
-  // app.get('/api/rolodex/search', isLoggedIn, (req, res) => {
+  // TODO Debug search - Currently breaks CSS relative pathing
+  // Search and findAll contacts in rolodex by name, company, city, or relationship
+  // app.get('/rolodex/search', isLoggedIn, (req, res) => {
   //   const { term } = req.query;
   //   db.Rolodex.findAll({
   //     where: {
@@ -94,6 +94,7 @@ module.exports = (app) => {
   //* ==========================
   //* Put Routes
   //* ==========================
+  // TODO Update rolodex PUT route and attach to front-end
   // app.put('/api/rolodex/:id', (req, res) => {
   //   db.Rolodex.update(
   //     {
